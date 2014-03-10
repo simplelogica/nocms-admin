@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  no_cms:
+    admin:
+      menu_items:
+        authors: Authors
+        blog: Blog
+        categories: Categories
+        drafts: Drafts
+        pages: Pages
+        posts: Posts
+
