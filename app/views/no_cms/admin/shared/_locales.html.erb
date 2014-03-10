@@ -1,0 +1,5 @@
+<div class="lang">
+  <% I18n.available_locales.each do |l| %>
+    <%= link_to l.to_s.upcase, url_for(request.params.merge(locale: l)),  class: (l == I18n.locale ? 'current' : nil) %>
+  <% end %>
+</div>
