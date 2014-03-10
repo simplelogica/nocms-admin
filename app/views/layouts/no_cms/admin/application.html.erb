@@ -48,27 +48,7 @@
       </div>
     </div>
     <div class="content">
-      <ul>
-        <li><a href="">Agenda</a></li>
-        <li><a href="">Páginas</a></li>
-        <li class="parent"><a href="">Gestión académica</a>
-          <ul>
-            <li><a href="">Titulaciones</a></li>
-            <li><a href="">Grados</a></li>
-            <li><a href="">Postgrados</a>
-              <ul>
-                <li><a href="">Tercer nivel este es un titular de apartado especialmente largo</a></li>
-                <li><a href="">Hijo 2</a></li>
-                <li><a href="">Otros hijos</a></li>
-                <li><a href="">Ojete caléndula</a></li>
-              </ul>
-            </li>
-            <li><a href="">Otra cosa</a></li>
-            <li><a href="">Y otra más</a></li>
-          </ul>
-        </li>
-        <li><a href="">FAQ</a></li>
-      </ul>
+      <%= render partial: 'menu_item', collection: NoCms::Admin.menu_items, layout: 'menu_items', as: :menu_item %>
     </div>
   </aside>
 
