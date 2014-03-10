@@ -7,7 +7,10 @@
   <%= stylesheet_link_tag  "no_cms/admin/application", media: "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<% second_menu = yield :second_menu %>
+
+<body <%= raw 'class="col-1-only"' if second_menu.blank? %>>
 
 <section id="content-area">
   <div class="tool-bar">
@@ -47,6 +50,7 @@
     </div>
   </aside>
 
+<% unless second_menu.blank? %>
   <aside id="col-2">
     <div class="tool-bar">
       <a href="#" id="js-expand-col-2" class="ico-expand" title="Expand page listing"></a>
@@ -54,94 +58,19 @@
       <a href="#" id="js-filter" class="ico-filter" title="Filter"></a>
       <a href="#" id="js-add-new" class="right ico-add accent" title="Add new page"></a>
     </div>
-    <div class="page-nav">
-      <p>
-        <span class="prev">«</span>
-        <a href="?pa=2" class="page">1</a>
-        <span class="elipsis">...</span>
-        <span class="current">81</span>
-        <a href="?pa=2" class="page">82</a>
-        <a href="?pa=3" class="page">83</a>
-        <a href="?pa=4" class="page">84</a>
-        <a href="?pa=5" class="page">85</a>
-        <a href="?pa=6" class="page">86</a>
-        <a href="?pa=7" class="page">87</a>
-        <a href="?pa=8" class="page">88</a>
-        <a href="?pa=9" class="page">89</a>
-        <a href="?pa=10" class="page">90</a>
-        <a href="?pa=11" class="page">91</a>
-        <a href="?pa=12" class="page">92</a>
-        <a href="?pa=13" class="page">93</a>
-        <span class="elipsis">...</span>
-        <a href="?pa=30" class="page">300</a>
-        <a href="?pa=2" class="next">»</a>
-      </p>
-    </div>
+    <% pagination = yield :pagination %>
+    <% unless pagination.blank? %>
+      <div class="page-nav">
+        <p>
+          <%= pagination %>
+        </p>
+      </div>
+    <% end %>
     <div class="content">
-      <ul>
-        <li><a href="">Home</a></li>
-        <li class="oculto"><a href="">Conócenos</a></li>
-        <li><a href="">Oferta académica</a></li>
-        <li><a href="">Admisiones y ayudas</a>
-          <ul>
-            <li><a href="">Proceso de admisión de Grado</a>
-              <ul>
-                <li><a href="">Acceso a grado</a><div class="mo">dsds</div>
-                  <ul>
-                    <li><a href="">Empiezo la universidad este año - Vengo de 2º de bachiller o COU</a></li>
-                    <li><a href="">Empiezo la universidad este año - Poseo un FP o Ciclo Formativo de Grado Superior</a></li>
-                    <li><a href="">Estoy cambiando de universidad</a></li>
-                    <li><a href="">Empiezo mi segunda carrera</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="">Adminsión medicina</a></li>
-        <li><a href="">Home</a></li>
-        <li><a href="">Conócenos</a></li>
-        <li><a href="">Oferta académica</a></li>
-        <li><a href="">Admisiones y ayudas</a>
-          <ul>
-            <li><a href="">Proceso de admisión de Grado</a>
-              <ul>
-                <li class="oculto"><a href="">Acceso a grado</a>
-                  <ul>
-                    <li><a href="">Empiezo la universidad este año - Vengo de 2º de bachiller o COU</a></li>
-                    <li><a href="">Empiezo la universidad este año - Poseo un FP o Ciclo Formativo de Grado Superior OCULTA</a></li>
-                    <li><a href="">Estoy cambiando de universidad</a></li>
-                    <li><a href="">Empiezo mi segunda carrera</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="">Adminsión medicina</a></li>
-        <li><a href="">Home</a></li>
-        <li><a href="">Conócenos</a></li>
-        <li><a href="">Oferta académica</a></li>
-        <li><a href="">Admisiones y ayudas</a>
-          <ul>
-            <li><a href="">Proceso de admisión de Grado</a>
-              <ul>
-                <li><a href="">Acceso a grado</a>
-                  <ul>
-                    <li><a href="">Empiezo la universidad este año - Vengo de 2º de bachiller o COU</a></li>
-                    <li><a href="">Empiezo la universidad este año - Poseo un FP o Ciclo Formativo de Grado Superior OCULTA</a></li>
-                    <li><a href="">Estoy cambiando de universidad</a></li>
-                    <li><a href="">Empiezo mi segunda carrera</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="">Adminsión medicina</a></li>
-      </ul>
+      <%= second_menu %>
     </div>
   </aside>
+  <% end %>
 </section>
 
 
