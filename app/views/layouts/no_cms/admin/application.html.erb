@@ -39,13 +39,8 @@
 
   <aside id="col-1">
     <div class="tool-bar">
-      <div class="lang">
-        <a href="">ES</a>
-        <a href="" class="current">EN</a>
-        <a href="">FR</a>
-        <a href="">IT</a>
-        <a href="">DE</a>
-      </div>
+      <%= render 'no_cms/admin/shared/locales' %>
+
     </div>
     <div class="content">
       <%= render partial: 'no_cms/admin/shared/menu_item', collection: NoCms::Admin.menu_items, layout: 'no_cms/admin/shared/menu_items', as: :menu_item %>
