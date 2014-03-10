@@ -1,4 +1,6 @@
-module Admin
-  class ApplicationController < ActionController::Base
+module NoCms
+  module Admin
+    class ApplicationController < ActionController::Base
+    end
   end
 end

@@ -1,4 +1,6 @@
-module Admin
-  module ApplicationHelper
+module NoCms
+  module Admin
+    module ApplicationHelper
+    end
   end
 end
