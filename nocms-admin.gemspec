@@ -5,13 +5,13 @@ require "no_cms/admin/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "admin"
+  s.name        = "nocms-admin"
   s.version     = NoCms::Admin::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Admin."
-  s.description = "TODO: Description of Admin."
+  s.authors     = ["David J. Brenes"]
+  s.email       = ["david.brenes@simplelogica.net"]
+  s.homepage    = "http://www.simplelogica.net"
+  s.summary     = "Common layout and functionalities for NoCMS custom admins."
+  s.description = "Common layout and functionalities for NoCMS custom admins"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
