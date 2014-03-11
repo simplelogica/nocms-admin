@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>NºCMS</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.css">
+
   <%= stylesheet_link_tag  "no_cms/admin/application", media: "all" %>
+  <%= yield :stylesheets %>
+
   <%= csrf_meta_tags %>
 </head>
 
@@ -84,9 +87,12 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <%= javascript_include_tag "no_cms/admin/application" %>
-</body>
-</html>
-
+<%= yield :js %>
+<script type="text/javascript">
+  $(function(){
+    <%= yield :ready_js %>
+  });
+</script>
 
 </body>
 </html>
