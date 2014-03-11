@@ -875,7 +875,7 @@ section#content-area {
   background: #fff;
   .content {
     padding-top: $tool_bar_h;
-    > .row {
+    .row {
       @include clearfix;
       padding: ($content_area_padding - 3px) $content_area_padding ($content_area_padding - 8px) $content_area_padding;
       border-bottom: 1px solid darken(#fff, 20%);
