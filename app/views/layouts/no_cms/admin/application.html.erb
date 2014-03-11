@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>NºCMS</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.css">
+
   <%= stylesheet_link_tag  "no_cms/admin/application", media: "all" %>
+  <%= yield :stylesheets %>
+
   <%= csrf_meta_tags %>
 </head>
 
@@ -13,29 +16,14 @@
 <body <%= raw 'class="col-1-only"' if second_menu.blank? %>>
 
 <section id="content-area">
-  <div class="tool-bar">
-    <a href="#" class="ico-back">«</a>
-    <a href="#" class="ico-next">»</a>
-    <a href="#" class="btn right">Save</a>
-    <a href="#" class="btn right">Save and new</a>
-    <a href="#" class="btn right">Hide</a>
-  </div>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, blanditiis, tenetur, itaque alias mollitia adipisci dolorem vel expedita totam soluta consectetur labore deleniti iure provident doloribus in pariatur consequuntur asperiores esse incidunt porro optio nostrum dolor eveniet amet. Architecto, minus obcaecati qui repudiandae in veritatis porro nisi doloribus non quas aliquam doloremque tempora facilis repellendus fugit quae harum iusto cum! Amet, dicta odit accusantium debitis cupiditate expedita autem provident odio velit cumque quidem pariatur aliquid deleniti voluptatem nemo aperiam iusto facilis similique dolor reprehenderit distinctio officia illo soluta quod sed! Modi, unde dolores deleniti earum dolorem. Deserunt, a quas minus.</p>
-  </div>
-  <div class="advanced">
-    <p class="title collapsed">Opciones avanzadas</p>
-    <div>
-      Ojete
-    </div>
-  </div>
+  <%= yield %>
 </section>
 
 
 <section id="interface">
   <header id="main-header">
     <div class="logo">
-      <%= link_to image_tag("no_cms/admin/NoCMS_logo.svg", alt: "NoCMS Rules", width: "94px", height: "44px"), root_path, class: 'logo' %>
+      <%= link_to image_tag("no_cms/admin/NoCMS_logo.svg", alt: "NoCMS Rules", width: "94px", height: "44px"), no_cms_admin.root_path, class: 'logo' %>
     </div>
     <a href="#" class="btn right ico-logout">LOGOUT</a>
   </header>
@@ -46,7 +34,7 @@
 
     </div>
     <div class="content">
-      <%= render partial: 'no_cms/admin/shared/menu_item', collection: NoCms::Admin.menu_items, layout: 'no_cms/admin/shared/menu_items', as: :menu_item %>
+      <%= render partial: 'no_cms/admin/shared/menu_item', collection: NoCms::Admin.menu_items, layout: 'no_cms/admin/shared/menu_items', as: :menu_item, locals: { current: @current_section } %>
     </div>
   </aside>
 
@@ -84,9 +72,12 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <%= javascript_include_tag "no_cms/admin/application" %>
-</body>
-</html>
-
+<%= yield :js %>
+<script type="text/javascript">
+  $(function(){
+    <%= yield :ready_js %>
+  });
+</script>
 
 </body>
 </html>

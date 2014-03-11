@@ -24,7 +24,6 @@ $(document).ready(function() {
 
   // Mark current
   $('aside#col-1, aside#col-2').on('click', 'a', function(e) {
-    e.preventDefault();
     $(this).closest('.content').find('li').removeClass('current');
     $(this).parent().addClass('current');
   });

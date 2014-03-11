@@ -26,31 +26,34 @@ $error: #ec3f28;
 /* Main BG color */
 $bg: #272c2f;
 
-$grey_0a: #090a0b;
-$grey_0b: #131516;
-$grey_0c: #1c1f21;
-$grey_0d: #272c2f;
-$grey_0e: #2e3438;
-$grey_0f: #383e43;
-$grey_0g: #41494e;
-$grey_0h: #4a5359;
-$grey_0i: #545e64;
-$grey_0j: #5d686f;
-$grey_0k: #66737a;
-$grey_0l: #6f7d85;
-$grey_0m: #7a8790;
-$grey_0n: #859199;
-$grey_0o: #909ba2;
-$grey_0p: #9ba5ab;
-$grey_0q: #a6afb5;
-$grey_0r: #b1b9be;
-$grey_0s: #bcc3c7;
-$grey_0t: #c7cdd1;
-$grey_0u: #d3d7da;
-$grey_0v: #dee1e3;
-$grey_0w: #e9ebec;
-$grey_0x: #f4f5f6;
-$grey_0y: #ffffff;
+/* ==============================================
+MIXINs */
+
+/* @include clearfix */
+@mixin clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+/* @extend %clearfix */
+%clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+.clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
 
 
 * {
@@ -79,6 +82,18 @@ body {
 /* 'Trebuchet MS', Trebuchet, Tahoma, Verdana, Arial, Helvetica, sans-serif; */
 /* Georgia, 'Times New Roman', Times, serif; */
 /* 'Courier New', Courier, monospace; */
+
+@font-face {
+  font-family: 'pragmataproregular';
+  src: font-url('no_cms/admin/fsd_-_pragmatapro-webfont.eot');
+  src: font-url('no_cms/admin/fsd_-_pragmatapro-webfont.eot?#iefix') format('embedded-opentype'),
+       font-url('no_cms/admin/fsd_-_pragmatapro-webfont.woff') format('woff'),
+       font-url('no_cms/admin/fsd_-_pragmatapro-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font_mono: 'pragmataproregular', 'Courier New', Courier, monospace;
 
 /* -------------------------------------
 =Initial */
@@ -251,7 +266,7 @@ footer address a:hover {
 }
 
 /* ICONO AUTOMÁTICO EN LINKS DE DOWNLOAD */
-/* a[href$=".pdf"] { padding:0 20px 0 0; background:transparent url(/img/pdf.png) no-repeat center right; } */
+/* a[href$=".pdf"] { padding:0 20px 0 0; background:transparent assets-url(/img/pdf.png) no-repeat center right; } */
 
 /* -------------------------------------
 =Tipografias del site */
@@ -372,12 +387,17 @@ body {
 
   /* Maximun space for edition */
   &.col-1-only {
-    padding-left:($col_1_w) ;
+    padding-left:($col_1_w);
     #main-header {
       width: ($col_1_w);
     }
     aside#col-2 {
       display: none;
+    }
+    section#content-area {
+      .tool-bar {
+        width: (100 - $col_1_w);
+      }
     }
   }
   /* Only first column active */
@@ -419,34 +439,6 @@ body {
     padding-left: 12px;
     > a {
       display: block;
-    }
-  }
-}
-
-section#content-area {
-  position: relative;
-  min-height: 100%;
-  height: auto;
-  background: #fff;
-  > .content {
-    padding: $content_area_padding;
-    padding-top: $content_area_padding+$tool_bar_h;
-  }
-  > .tool-bar {
-    width: 100-($col_1_w+$col_2_w);
-    margin-top: 0;
-    margin-left: 0;
-    background: darken(#fff, 5%);
-    border-bottom: 2px solid darken(#fff, 20%);
-  }
-  > .advanced {
-    max-height: $tool_bar_h;
-    padding: $content_area_padding;
-    background: darken(#fff, 5%);
-    border-top: 1px solid darken(#fff, 10%);
-    border-bottom: 1px solid darken(#fff, 10%);
-    > div {
-      display: none;
     }
   }
 }
@@ -505,6 +497,10 @@ section#content-area {
       color: #fff;
     }
 
+    &.active {
+      background-color: desaturate(darken($accent, 20%), 20%);
+    }
+
     &.accent {
       background-color: desaturate(darken($accent, 20%), 20%);
       &:hover {
@@ -545,6 +541,12 @@ section#content-area {
 
     &.ico-filter {
       background-image: image-url('no_cms/admin/ico-filter.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &.ico-search {
+      background-image: image-url('no_cms/admin/ico-search.png');
       background-position: center center;
       background-repeat: no-repeat;
     }
@@ -591,13 +593,21 @@ $pagenav_text_color: lighten($bg, 30%);
       padding: 0 5px;
       margin: 7px 1px 0 0;
 
+      border-radius: 2px;
+
       font-size: 14px;
       text-decoration: none;
       background: darken($bg, 10%);
       color: $pagenav_text_color;
     }
+    .prev {
+      background: darken($bg, 10%) image-url('ico-prev.png') center center no-repeat;
+    }
+    .next {
+      background: darken($bg, 10%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGRJREFUeNrs1cENACAIQ1Fx/53rxbv8Eg5GGaAvEYSQNDprjuZ6B1A3EC5CnshCaA8w4jQZIe4UpZHKmKaQ6j84IlVAG2kBjuEVIBXuAulwB0DhFMDhdJuG0yyyTf9FuxRYAgwA0SUSLa+1uqIAAAAASUVORK5CYII=) center center no-repeat;
+    }
     .current {
-      background: darken($accent, 20%);
+      background: desaturate(darken($accent, 20%), 20%);
       color: #fff;
     }
     a {
@@ -670,14 +680,17 @@ $pagenav_text_color: lighten($bg, 30%);
     border: 0;
     padding: 0 5px;
     margin: 0 1px 0 0;
-    // background: lighten($bg, 5%);
+
+    line-height: 28px;
+
+    border-radius: 2px;
 
     &:hover {
       background: $accent;
       color: #000;
     }
     &.current {
-      background: darken($accent, 20%);
+      background: desaturate(darken($accent, 20%), 20%);
       color: #fff;
     }
   }
@@ -685,17 +698,21 @@ $pagenav_text_color: lighten($bg, 30%);
 
 /* Buttons */
 
+input[type=submit].btn,
 a.btn {
   width: auto;
   min-height: 24px;
   border: 0;
   padding: 4px 8px;
   margin: 0 1px 0 0;
-  background: darken($accent, 20%);
+  background: desaturate(darken($accent, 20%), 20%);
 
   font-size: 12px;
+  text-transform: uppercase;
   text-decoration: none;
   color: #fff;
+
+  border-radius: 2px;
 
   &:hover {
     background: $accent;
@@ -704,6 +721,7 @@ a.btn {
 
   &.ico-logout {
     margin: 10px 10px 0 0;
+    border-radius: 2px;
   }
 }
 
@@ -771,7 +789,7 @@ aside#col-2 {
       &.current {
         > a {
           border-left: 4px solid $accent;
-          color: $grey_0y;
+          color: #fff;
           background: lighten($bg, 10%);
         }
         & > ul {
@@ -849,26 +867,151 @@ aside#col-2 {
 }
 
 
-#content-area {
+section#content-area {
+  position: relative;
+  min-height: 100%;
+  height: auto;
+  padding-bottom: $log_bar_h;
+  background: #fff;
+  .content {
+    padding-top: $tool_bar_h;
+    > .row {
+      @include clearfix;
+      padding: ($content_area_padding - 3px) $content_area_padding ($content_area_padding - 8px) $content_area_padding;
+      border-bottom: 1px solid darken(#fff, 20%);
+      background: darken(#fff, 2%);
+      &:nth-child(even) {
+        background: darken(#fff, 6%);
+      }
+    }
+  }
   .tool-bar {
+    width: 100 - ($col_1_w + $col_2_w);
+    margin-top: 0;
+    margin-left: 0;
+    background: darken(#fff, 10%);
+    border-bottom: 2px solid darken(#fff, 30%);
+    .btn {
+      margin-top: 8px;
+      &.right {
+        margin-right: 8px;
+      }
+    }
     a {
       background: red;
-      background: darken(#fff, 5%);
-      border-right: 1px solid darken(#fff, 20%);
+      background: darken(#fff, 10%);
+      border-right: 1px solid darken(#fff, 30%);
 
       color: $bg;
 
       &:hover {
-        background: darken(#fff, 20%);
+        background: darken(#fff, 30%);
       }
 
       &.right {
         border-right: 0;
-        border-left: 1px solid darken(#fff, 20%);
+        border-left: 1px solid darken(#fff, 30%);
+        margin-right: 0;
       }
-
+      &.ico-prev {
+        background-image: image-url('no_cms/admin/ico-prev-dark.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      &.ico-next {
+        background-image: image-url('no_cms/admin/ico-next-dark.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
     }
+  }
+  .advanced {
+    max-height: $tool_bar_h;
+    padding: $content_area_padding;
+    background: darken(#fff, 10%);
+    border-top: 1px solid darken(#fff, 30%);
+    border-bottom: 1px solid darken(#fff, 30%);
+    > div {
+      display: none;
+    }
+  }
+  //
+  // Form styles
+  //
+  label {
+    width: 100%;
+    padding: 0 16px 8px 0;
+    font-weight: 700;
+    color: $bg;
+  }
+  legend {
+    padding-right: 16px;
+    padding-bottom: 4px;
+    font-weight: 700;
+    color: $bg;
+  }
+  /* Los checkbox deben estar dentro de un fieldset */
+  fieldset {
+    width: 100%;
+    float: left;
+    label {
+      width: auto;
+      font-weight: 400;
+      white-space:nowrap;
+    }
+  }
+  input[type=radio],
+  input[type=checkbox] {
 
   }
-}
+  input[type=text],
+  input[type=date],
+  input[type=email],
+  input[type=password],
+  textarea {
+    width: 100%;
+    float: left;
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid darken(#fff, 30%);
+    outline: 0;
 
+    font-family: $font_mono;
+    font-size: 18px;
+    line-height: 1em;
+
+    &:focus {
+      border: 1px solid desaturate(darken($accent, 20%), 20%);
+    }
+    &.half {
+      width: 48%;
+      margin-right: 8px;
+    }
+    &.third {
+      width: 31%;
+      margin-right: 8px;
+    }
+  }
+  input[type=text],
+  input[type=date],
+  input[type=email],
+  input[type=password] {
+    height: 32px;
+    padding: 4px 8px 8px 8px;
+    line-height: 18px;
+  }
+  input[type=date] {
+    width: auto;
+  }
+  textarea {
+    float: left;
+    resize:vertical;
+  }
+  select {
+    float: left;
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    outline: 0;
+  }
+}

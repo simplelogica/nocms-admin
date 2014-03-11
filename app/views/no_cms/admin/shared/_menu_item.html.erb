@@ -1,4 +1,5 @@
-<li>
+<% current ||= nil %>
+<li  <%= raw 'class="current"' if current == menu_item[:name] %>>
   <%= link_to I18n.t("no_cms.admin.menu_items.#{menu_item[:name]}"), menu_item_url(menu_item)  %>
-  <%= render partial: 'no_cms/admin/shared/menu_item', collection: menu_item[:children], layout: 'no_cms/admin/shared/menu_items', as: :menu_item unless menu_item[:children].blank? %>
+  <%= render partial: 'no_cms/admin/shared/menu_item', collection: menu_item[:children], layout: 'no_cms/admin/shared/menu_items', as: :menu_item, locals: { current: current } unless menu_item[:children].blank? %>
 </li>
