@@ -16,22 +16,7 @@
 <body <%= raw 'class="col-1-only"' if second_menu.blank? %>>
 
 <section id="content-area">
-  <div class="tool-bar">
-    <a href="#" class="ico-back">«</a>
-    <a href="#" class="ico-next">»</a>
-    <a href="#" class="btn right">Save</a>
-    <a href="#" class="btn right">Save and new</a>
-    <a href="#" class="btn right">Hide</a>
-  </div>
-  <div class="content">
-    <%= yield %>
-  </div>
-  <div class="advanced">
-    <p class="title collapsed">Opciones avanzadas</p>
-    <div>
-      Ojete
-    </div>
-  </div>
+  <%= yield %>
 </section>
 
 
