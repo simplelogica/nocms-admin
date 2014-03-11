@@ -46,7 +46,7 @@
 
     </div>
     <div class="content">
-      <%= render partial: 'no_cms/admin/shared/menu_item', collection: NoCms::Admin.menu_items, layout: 'no_cms/admin/shared/menu_items', as: :menu_item %>
+      <%= render partial: 'no_cms/admin/shared/menu_item', collection: NoCms::Admin.menu_items, layout: 'no_cms/admin/shared/menu_items', as: :menu_item, locals: { current: @current_section } %>
     </div>
   </aside>
 
