@@ -370,6 +370,125 @@ u -> ultralight
 /* IE8 has problms asigning the font weight if fonts its no explicity specified */
 
 
+//
+// Default square buttons
+//
+
+/* Default dark buttons 44x44px */
+a.btn-square {
+  display: block;
+  float: left;
+  width: 44px;
+  height: 44px;
+
+  border-right: 1px solid $bg;
+  background-color: lighten($bg, 10%);
+  color: #ccc;
+
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px;
+
+  &:hover {
+    background-color: desaturate(darken($accent, 20%), 20%);
+    color: #fff;
+  }
+
+  &.active {
+    // background-color: desaturate(darken($accent, 20%), 20%);
+    background-color: $accent;
+  }
+
+  &.accent {
+    background-color: desaturate(darken($accent, 20%), 20%);
+    &:hover {
+      background-color: $accent;
+    }
+  }
+
+  &.right {
+    float: right;
+    border-right: 0;
+    border-left: 1px solid $bg;
+  }
+
+  &.error {
+    // background-color: desaturate(darken($error, 20%), 20%);
+    &:hover {
+      background-color: $error;
+    }
+  }
+
+  &.ico-close {
+    background-image: image-url('no_cms/admin/ico-close.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-expand {
+    background-image: image-url('no_cms/admin/ico-expand.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-expand-dark {
+    background-image: image-url('no_cms/admin/ico-expand-dark.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-add {
+    background-image: image-url('no_cms/admin/ico-add.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-filter {
+    background-image: image-url('no_cms/admin/ico-filter.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-search {
+    background-image: image-url('no_cms/admin/ico-search.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+input[type=reset].btn,
+input[type=submit].btn,
+a.btn {
+  width: auto;
+  min-height: 27px;
+  border: 0;
+  outline: 0;
+  padding: 6px 8px;
+  margin: 7px 1px 0 8px;
+  background-color: desaturate(darken($accent, 20%), 20%);
+
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+
+  border-radius: 2px;
+
+  &.right {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: $accent;
+    color: #fff;
+  }
+}
+
+input[type=reset].btn {
+  background-color: lighten($bg, 40%);
+}
+
 $col_1_w: 15%;
 $col_2_w: 30%;
 
@@ -381,10 +500,16 @@ body {
   margin: 0;
   padding: 0 0 0 ($col_1_w+$col_2_w);
   min-height: 100%;
-  background: darken($bg, 30%);
+  background: darken($bg, 10%);
 
   overflow-x: hidden;
 
+  /* Maximun space for edition */
+  &.go-full-screen {
+    #interface {
+      display: none;
+    }
+  }
   /* Maximun space for edition */
   &.col-1-only {
     padding-left:($col_1_w);
@@ -410,7 +535,7 @@ body {
         width: $col_1_w+$col_2_w;
         left: 0;
         .ico-expand {
-          background-color: desaturate(darken($accent, 20%), 20%);
+          background-color: $accent;
         }
       }
     }
@@ -461,112 +586,6 @@ body {
   &.expanded {
     height: 50%;
     overflow: auto;
-  }
-}
-
-//
-// Default square buttons
-//
-
-/* Default dark buttons 44x44px */
-a.btn-square {
-  display: block;
-  float: left;
-  width: 44px;
-  height: 44px;
-
-  border-right: 1px solid $bg;
-  background-color: lighten($bg, 10%);
-  color: #ccc;
-
-  text-align: center;
-  text-decoration: none;
-  line-height: 40px;
-
-  &:hover {
-    background-color: desaturate(darken($accent, 20%), 20%);
-    color: #fff;
-  }
-
-  &.active {
-    background-color: desaturate(darken($accent, 20%), 20%);
-  }
-
-  &.accent {
-    background-color: desaturate(darken($accent, 20%), 20%);
-    &:hover {
-      background-color: $accent;
-    }
-  }
-
-  &.right {
-    float: right;
-    border-right: 0;
-    border-left: 1px solid $bg;
-  }
-
-  &.error {
-    // background-color: desaturate(darken($error, 20%), 20%);
-    &:hover {
-      background-color: $error;
-    }
-  }
-
-  &.ico-close {
-    background-image: image-url('no_cms/admin/ico-close.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  &.ico-expand {
-    background-image: image-url('no_cms/admin/ico-expand.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  &.ico-add {
-    background-image: image-url('no_cms/admin/ico-add.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  &.ico-filter {
-    background-image: image-url('no_cms/admin/ico-filter.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  &.ico-search {
-    background-image: image-url('no_cms/admin/ico-search.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-}
-
-input[type=submit].btn,
-a.btn {
-  width: auto;
-  min-height: 27px;
-  border: 0;
-  padding: 6px 8px;
-  margin: 7px 1px 0 8px;
-  background: desaturate(darken($accent, 20%), 20%);
-
-  font-size: 12px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-
-  border-radius: 2px;
-
-  &.right {
-    margin-left: 0;
-    margin-right: 8px;
-  }
-
-  &:hover {
-    background: $accent;
-    color: #fff;
   }
 }
 
@@ -762,22 +781,6 @@ a[data-tooltip]:visited {
   text-decoration: none;
 }
 
-/* a[data-tooltip]:before {
-  content: " ";
-  border: solid transparent;
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: transparent;
-  border-right-color: #000000;
-  border-width: 8px;
-  margin-top: 0;
-  left: 16px;
-
-  visibility: hidden;
-} */
-
 a[data-tooltip]:after {
   content: attr(data-tooltip);
   display: block;
@@ -805,7 +808,11 @@ a[data-tooltip]:hover:after {
   visibility: visible;
 }
 
-/* Columna de opciones generales */
+
+//
+// Columnas de la izquierda
+//
+
 aside#col-1 {
   position: fixed;
   width: $col_1_w;
@@ -879,7 +886,7 @@ aside#col-2 {
       }
       &.oculto {
         > a {
-          background: darken($bg, 10%) image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1.png') 0 0 repeat;
+          background: darken($bg, 10%) image-url('nocms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1.png') 0 0 repeat;
         }
       }
       > ul {
@@ -939,6 +946,51 @@ aside#col-2 {
 }
 
 
+//
+// Search bar / filter bar
+//
+.filter-bar,
+.search-bar {
+  display: none;
+  width: 100%;
+  min-height: $tool_bar_h;
+  overflow: hidden;
+
+  margin-left: -1px;
+  padding: 20px;
+
+  background: darken($bg, 10%);
+  border-bottom: 1px solid $bg;
+}
+
+.search-bar {
+  form {
+    position: relative;
+    display: block;
+    background: transparent;
+  }
+  input[type=text] {
+    width: 98%;
+    float: left;
+    margin: 0 36px 0 0;
+    padding: 8px;
+    border: 1px solid darken(#fff, 30%);
+    outline: 0;
+  }
+  input[type=submit] {
+    position: absolute;
+    right: 0;
+    width: 33px;
+    height: 33px;
+    margin: 0;
+    background: desaturate(darken($accent, 20%), 20%) image-url('no_cms/admin/ico-search-mini.png') center center no-repeat;
+  }
+}
+
+.filter-bar {
+
+}
+
 section#content-area {
   position: relative;
   min-height: 100%;
@@ -967,6 +1019,7 @@ section#content-area {
       background-color: darken(#fff, 10%);
       border-right: 1px solid darken(#fff, 30%);
       color: $bg;
+      &.active,
       &:hover {
         background-color: darken(#fff, 30%);
       }
@@ -976,12 +1029,12 @@ section#content-area {
         margin-right: 0;
       }
       &.ico-prev {
-        background-image: url('no_cms/admin/ico-prev-dark.png');
+        background-image: image-url('no_cms/admin/ico-prev-dark.png');
         background-position: center center;
         background-repeat: no-repeat;
       }
       &.ico-next {
-        background-image: url('no_cms/admin/ico-next-dark.png');
+        background-image: image-url('no_cms/admin/ico-next-dark.png');
         background-position: center center;
         background-repeat: no-repeat;
       }
@@ -1002,83 +1055,115 @@ section#content-area {
       color: #000;
     }
   }
-  //
-  // Form styles
-  //
+}
+
+//
+// Form styles
+//
+label {
+  width: 100%;
+  padding: 0 16px 8px 0;
+  font-weight: 700;
+  color: $bg;
+}
+legend {
+  padding-right: 16px;
+  padding-bottom: 4px;
+  font-weight: 700;
+  color: $bg;
+}
+/* Los checkbox deben estar dentro de un fieldset */
+fieldset {
+  width: 100%;
+  float: left;
   label {
-    width: 100%;
-    padding: 0 16px 8px 0;
-    font-weight: 700;
-    color: $bg;
+    width: auto;
+    font-weight: 400;
+    white-space:nowrap;
   }
-  legend {
-    padding-right: 16px;
+}
+input[type=radio],
+input[type=checkbox] {
+
+}
+input[type=text],
+input[type=date],
+input[type=email],
+input[type=password],
+textarea {
+  width: 100%;
+  float: left;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid darken(#fff, 30%);
+  outline: 0;
+
+  font-family: $font_mono;
+  font-size: 18px;
+  line-height: 1em;
+
+  &:focus {
+    border: 1px solid desaturate(darken($accent, 20%), 20%);
+  }
+  &.half {
+    width: 48%;
+    margin-right: 8px;
+  }
+  &.third {
+    width: 31%;
+    margin-right: 8px;
+  }
+}
+input[type=text],
+input[type=date],
+input[type=email],
+input[type=password] {
+  height: 32px;
+  padding: 4px 8px 8px 8px;
+  line-height: 18px;
+}
+input[type=date] {
+  width: auto;
+}
+textarea {
+  float: left;
+  resize:vertical;
+}
+select {
+  float: left;
+  padding: 8px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  outline: 0;
+}
+
+//
+// Form styles de filter
+//
+#interface {
+  legend,
+  label {
+    color: #fff;
     padding-bottom: 4px;
-    font-weight: 700;
-    color: $bg;
   }
-  /* Los checkbox deben estar dentro de un fieldset */
-  fieldset {
-    width: 100%;
-    float: left;
-    label {
-      width: auto;
-      font-weight: 400;
-      white-space:nowrap;
-    }
-  }
-  input[type=radio],
-  input[type=checkbox] {
-
-  }
-  input[type=text],
-  input[type=date],
-  input[type=email],
-  input[type=password],
-  textarea {
-    width: 100%;
-    float: left;
-    margin-bottom: 8px;
-    padding: 8px;
-    border: 1px solid darken(#fff, 30%);
-    outline: 0;
-
-    font-family: $font_mono;
-    font-size: 18px;
-    line-height: 1em;
-
-    &:focus {
-      border: 1px solid desaturate(darken($accent, 20%), 20%);
-    }
+  input[type=text] {
     &.half {
       width: 48%;
-      margin-right: 8px;
+      margin-left: 3.5%;
+      margin-right: 0;
+      &:first-of-type {
+        margin-left: 0;
+      }
     }
-    &.third {
-      width: 31%;
-      margin-right: 8px;
+  }
+  .filter-bar {
+    .row {
+      @include clearfix;
+      padding: 0 0 4px 0;
     }
-  }
-  input[type=text],
-  input[type=date],
-  input[type=email],
-  input[type=password] {
-    height: 32px;
-    padding: 4px 8px 8px 8px;
-    line-height: 18px;
-  }
-  input[type=date] {
-    width: auto;
-  }
-  textarea {
-    float: left;
-    resize:vertical;
-  }
-  select {
-    float: left;
-    padding: 8px;
-    margin-right: 10px;
-    margin-bottom: 8px;
-    outline: 0;
+    input[type=reset].btn,
+    input[type=submit].btn {
+      margin: 8px 0 0 8px;
+    }
   }
 }

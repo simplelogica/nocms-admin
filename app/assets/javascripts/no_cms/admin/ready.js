@@ -12,14 +12,12 @@ $(document).ready(function() {
     e.preventDefault();
     $('body').removeClass('col-2-only');
     $('body').toggleClass('col-1-only');
-    /* Act on the event */
   });
 
   $('#js-expand-col-2').on('click', function(e) {
     e.preventDefault();
     $('body').removeClass('col-1-only');
     $('body').toggleClass('col-2-only');
-    /* Act on the event */
   });
 
   // Mark current
@@ -31,6 +29,20 @@ $(document).ready(function() {
   // Add Class parent
   $('aside#col-1 li > ul, aside#col-2 li > ul').each(function(){
     $(this).parent().addClass('parent');
+  });
+
+  // Search button
+  $('#js-search').on('click', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $('.search-bar').toggle();
+  });
+
+  // Filter button
+  $('#js-filter').on('click', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $('.filter-bar').toggle();
   });
 
   // Show mini-options
