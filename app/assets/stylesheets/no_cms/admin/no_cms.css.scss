@@ -1055,6 +1055,34 @@ section#content-area {
       color: #000;
     }
   }
+
+  //
+  // Warning error and info msg
+  //
+  .content {
+    .msg {
+      padding-top: 12px;
+      /* Colors are based on Accent color */
+      &.info {
+        $col: hsl( 190, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
+      &.warning {
+        $col: hsl( 40, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
+      &.error {
+        $col: hsl( 0, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
+    }
+  }
 }
 
 //
