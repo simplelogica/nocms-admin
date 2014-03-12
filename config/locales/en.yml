@@ -3,4 +3,6 @@ en:
     admin:
       shared:
         secondary_menu_toolbar:
+          filter: Filter
           new: New
+          search: Search
