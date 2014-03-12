@@ -1,3 +1,14 @@
+<% f ||= nil %>
 <div class="tool-bar">
-  <%= yield %>
+  <%= begin
+    render 'toolbar_left', f: f
+    rescue ActionView::MissingTemplate
+      ''
+  end %>
+  <%= render 'no_cms/admin/shared/locales' %>
+  <%= begin
+    render 'toolbar_right', f: f
+    rescue ActionView::MissingTemplate
+      ''
+  end %>
 </div>
