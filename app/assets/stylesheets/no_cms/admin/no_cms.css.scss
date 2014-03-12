@@ -266,7 +266,7 @@ footer address a:hover {
 }
 
 /* ICONO AUTOMÁTICO EN LINKS DE DOWNLOAD */
-/* a[href$=".pdf"] { padding:0 20px 0 0; background:transparent assets-url(/img/pdf.png) no-repeat center right; } */
+/* a[href$=".pdf"] { padding:0 20px 0 0; background:transparent url(/img/pdf.png) no-repeat center right; } */
 
 /* -------------------------------------
 =Tipografias del site */
@@ -464,6 +464,116 @@ body {
   }
 }
 
+//
+// Default square buttons
+//
+
+/* Default dark buttons 44x44px */
+a.btn-square {
+  display: block;
+  float: left;
+  width: 44px;
+  height: 44px;
+
+  border-right: 1px solid $bg;
+  background-color: lighten($bg, 10%);
+  color: #ccc;
+
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px;
+
+  &:hover {
+    background-color: desaturate(darken($accent, 20%), 20%);
+    color: #fff;
+  }
+
+  &.active {
+    background-color: desaturate(darken($accent, 20%), 20%);
+  }
+
+  &.accent {
+    background-color: desaturate(darken($accent, 20%), 20%);
+    &:hover {
+      background-color: $accent;
+    }
+  }
+
+  &.right {
+    float: right;
+    border-right: 0;
+    border-left: 1px solid $bg;
+  }
+
+  &.error {
+    // background-color: desaturate(darken($error, 20%), 20%);
+    &:hover {
+      background-color: $error;
+    }
+  }
+
+  &.ico-close {
+    background-image: image-url('no_cms/admin/ico-close.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-expand {
+    background-image: image-url('no_cms/admin/ico-expand.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-add {
+    background-image: image-url('no_cms/admin/ico-add.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-filter {
+    background-image: image-url('no_cms/admin/ico-filter.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &.ico-search {
+    background-image: image-url('no_cms/admin/ico-search.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+input[type=submit].btn,
+a.btn {
+  width: auto;
+  min-height: 27px;
+  border: 0;
+  padding: 6px 8px;
+  margin: 7px 1px 0 8px;
+  background: desaturate(darken($accent, 20%), 20%);
+
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+
+  border-radius: 2px;
+
+  &.right {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background: $accent;
+    color: #fff;
+  }
+}
+
+//
+// Toolbars default styles
+//
+
 .tool-bar {
   position: fixed;
   width: 100%;
@@ -476,81 +586,6 @@ body {
   border-bottom: 1px solid darken($bg, 10%);
   color: lighten($bg, 20%);
   overflow:hidden;
-
-  /* Default dark buttons 44x44px */
-  a {
-    display: block;
-    float: left;
-    width: 44px;
-    height: 44px;
-
-    border-right: 1px solid $bg;
-    background-color: lighten($bg, 10%);
-    color: #ccc;
-
-    text-align: center;
-    text-decoration: none;
-    line-height: 40px;
-
-    &:hover {
-      background-color: desaturate(darken($accent, 20%), 20%);
-      color: #fff;
-    }
-
-    &.active {
-      background-color: desaturate(darken($accent, 20%), 20%);
-    }
-
-    &.accent {
-      background-color: desaturate(darken($accent, 20%), 20%);
-      &:hover {
-        background-color: $accent;
-      }
-    }
-
-    &.right {
-      float: right;
-      border-right: 0;
-      border-left: 1px solid $bg;
-    }
-
-    &.error {
-      // background-color: desaturate(darken($error, 20%), 20%);
-      &:hover {
-        background-color: $error;
-      }
-    }
-
-    &.ico-close {
-      background-image: image-url('no_cms/admin/ico-close.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    &.ico-expand {
-      background-image: image-url('no_cms/admin/ico-expand.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    &.ico-add {
-      background-image: image-url('no_cms/admin/ico-add.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    &.ico-filter {
-      background-image: image-url('no_cms/admin/ico-filter.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    &.ico-search {
-      background-image: image-url('no_cms/admin/ico-search.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-  }
 }
 
 //
@@ -600,49 +635,41 @@ $pagenav_text_color: lighten($bg, 30%);
       background: darken($bg, 10%);
       color: $pagenav_text_color;
     }
-    .prev {
-      background: darken($bg, 10%) image-url('ico-prev.png') center center no-repeat;
-    }
-    .next {
-      background: darken($bg, 10%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGRJREFUeNrs1cENACAIQ1Fx/53rxbv8Eg5GGaAvEYSQNDprjuZ6B1A3EC5CnshCaA8w4jQZIe4UpZHKmKaQ6j84IlVAG2kBjuEVIBXuAulwB0DhFMDhdJuG0yyyTf9FuxRYAgwA0SUSLa+1uqIAAAAASUVORK5CYII=) center center no-repeat;
-    }
     .current {
       background: desaturate(darken($accent, 20%), 20%);
       color: #fff;
     }
     a {
       &:hover {
-        background: $accent;
+        background-color: $accent;
         color: #000;
       }
     }
-    .prev {
-      height: 42px;
-      width: 42px;
-      position: absolute;
-      top: 0;
-      left: -1px;
-      margin-top: 0;
-      border-right: 1px solid $bg;
-      line-height: 40px;
-      &:hover {
-        background: $accent;
-        color: #000;
-      }
-    }
+    .prev,
     .next {
       height: 42px;
       width: 42px;
       position: absolute;
       top: 0;
-      right: 1px;
+      left: 0;
       margin-top: 0;
-      border-left: 1px solid $bg;
+      border-right: 1px solid $bg;
       line-height: 40px;
+
+      border-radius: 0;
+      background: darken($bg, 10%) image-url('no_cms/admin/ico-prev.png') center center no-repeat;
+
       &:hover {
-        background: $accent;
+        background-color: $accent;
         color: #000;
       }
+    }
+    .next {
+      background: darken($bg, 10%) image-url('no_cms/admin/ico-next.png') center center no-repeat;
+      border-right: 0;
+      border-left: 1px solid $bg;
+      left: auto;
+      right: 1px;
     }
   }
 }
@@ -665,67 +692,118 @@ $pagenav_text_color: lighten($bg, 30%);
   }
 }
 
+//
+// Lang / local bar
+//
+
 .lang {
+  float: left;
   text-align:center;
-  padding: 8px 0 0 8px;
+  padding: 7px 0 0 8px;
 
   font-size: 12px;
   line-height: 28px; /* Same as height */
   text-decoration: none;
-  color: $pagenav_text_color;
 
   > a {
+    display: inline-block;
     width: 28px;
     height: 28px;
     border: 0;
     padding: 0 5px;
-    margin: 0 1px 0 0;
-
-    line-height: 28px;
-
     border-radius: 2px;
 
+    text-decoration: none;
+    line-height: 28px;
+    color: #fff;
+
     &:hover {
-      background: $accent;
-      color: #000;
+      background-color: $accent;
+      color: #fff !important;
     }
     &.current {
-      background: desaturate(darken($accent, 20%), 20%);
-      color: #fff;
+      background-color: desaturate(darken($accent, 20%), 20%);
+      color: #fff !important;
     }
   }
 }
 
-/* Buttons */
+//
+// Tooltip
+//
 
-input[type=submit].btn,
-a.btn {
-  width: auto;
-  min-height: 24px;
-  border: 0;
-  padding: 4px 8px;
-  margin: 0 1px 0 0;
+a.info-tooltip {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  padding: 3px 0 0 0;
+
   background: desaturate(darken($accent, 20%), 20%);
-
-  font-size: 12px;
-  text-transform: uppercase;
-  text-decoration: none;
   color: #fff;
+
+  font-family: $font_mono;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 0.5em;
 
   border-radius: 2px;
 
   &:hover {
     background: $accent;
-    color: #fff;
-  }
-
-  &.ico-logout {
-    margin: 10px 10px 0 0;
-    border-radius: 2px;
+    color: #fdd;
   }
 }
 
+a[data-tooltip]:link,
+a[data-tooltip]:visited {
+  position: relative;
+  text-decoration: none;
+}
 
+/* a[data-tooltip]:before {
+  content: " ";
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-right-color: #000000;
+  border-width: 8px;
+  margin-top: 0;
+  left: 16px;
+
+  visibility: hidden;
+} */
+
+a[data-tooltip]:after {
+  content: attr(data-tooltip);
+  display: block;
+  width: 280px;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  padding: 15px;
+  border-radius: 2px;
+
+  background: #000;
+  color: white;
+
+  font-family: $f_base;
+  font-size:   $f_default_size;
+  font-weight: 400;
+  line-height: 1.2em;
+  text-align: left;
+
+  visibility: hidden;
+}
+
+a[data-tooltip]:hover:before,
+a[data-tooltip]:hover:after {
+  visibility: visible;
+}
 
 /* Columna de opciones generales */
 aside#col-1 {
@@ -834,15 +912,9 @@ aside#col-2 {
         margin: 0;
         padding: 0 0 0 16px;
         li {
-          // border-top: 1px solid lighten($bg, 10%);
           a {
             font-weight: 400;
           }
-          /* &:first-child {
-            > a {
-              border-top: 0;
-            }
-          } */
         }
       }
     }
@@ -880,7 +952,7 @@ section#content-area {
       padding: ($content_area_padding - 3px) $content_area_padding ($content_area_padding - 8px) $content_area_padding;
       border-bottom: 1px solid darken(#fff, 20%);
       background: darken(#fff, 2%);
-      &:nth-child(even) {
+      &:nth-of-type(even) {
         background: darken(#fff, 6%);
       }
     }
@@ -889,37 +961,27 @@ section#content-area {
     width: 100 - ($col_1_w + $col_2_w);
     margin-top: 0;
     margin-left: 0;
-    background: darken(#fff, 10%);
+    background-color: darken(#fff, 10%);
     border-bottom: 2px solid darken(#fff, 30%);
-    .btn {
-      margin-top: 8px;
-      &.right {
-        margin-right: 8px;
-      }
-    }
-    a {
-      background: red;
-      background: darken(#fff, 10%);
+    .btn-square {
+      background-color: darken(#fff, 10%);
       border-right: 1px solid darken(#fff, 30%);
-
       color: $bg;
-
       &:hover {
-        background: darken(#fff, 30%);
+        background-color: darken(#fff, 30%);
       }
-
       &.right {
         border-right: 0;
         border-left: 1px solid darken(#fff, 30%);
         margin-right: 0;
       }
       &.ico-prev {
-        background-image: image-url('no_cms/admin/ico-prev-dark.png');
+        background-image: url('no_cms/admin/ico-prev-dark.png');
         background-position: center center;
         background-repeat: no-repeat;
       }
       &.ico-next {
-        background-image: image-url('no_cms/admin/ico-next-dark.png');
+        background-image: url('no_cms/admin/ico-next-dark.png');
         background-position: center center;
         background-repeat: no-repeat;
       }
@@ -933,6 +995,11 @@ section#content-area {
     border-bottom: 1px solid darken(#fff, 30%);
     > div {
       display: none;
+    }
+  }
+  .lang {
+    > a {
+      color: #000;
     }
   }
   //
