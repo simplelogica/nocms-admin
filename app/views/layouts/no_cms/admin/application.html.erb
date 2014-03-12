@@ -41,10 +41,11 @@
 <% unless second_menu.blank? %>
   <aside id="col-2">
     <div class="tool-bar">
-      <a href="#" id="js-expand-col-2" class="ico-expand" title="Expand page listing"></a>
-      <a href="#" id="js-collapse-to-minimun" class="ico-close" title="Close page listing"></a>
-      <a href="#" id="js-filter" class="ico-filter" title="Filter"></a>
-      <a href="#" id="js-add-new" class="right ico-add accent" title="Add new page"></a>
+      <a href="#" id="js-expand-col-2" class="btn-square ico-expand" title="Expand page listing"></a>
+      <a href="#" id="js-collapse-to-minimun" class="btn-square ico-close" title="Close page listing"></a>
+      <a href="#" id="js-filter" class="btn-square ico-filter" title="Filter"></a>
+      <a href="#" id="js-find" class="btn-square ico-search" title="Search"></a>
+      <a href="#" id="js-add-new" class="btn-square right ico-add accent" title="Add new page"></a>
     </div>
     <% pagination = yield :pagination %>
     <% unless pagination.blank? %>
