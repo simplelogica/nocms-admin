@@ -45,6 +45,13 @@ $(document).ready(function() {
     $('.filter-bar').toggle();
   });
 
+  // Go full-screen in content area
+  $('#js-go-full-screen').on('click', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $('body').removeClass('col-1-only').toggleClass('go-full-screen');
+  });
+
   // Show mini-options
 /*  $('aside#col-2 .content').on('mouseenter', 'a', function(e) {
     e.preventDefault();
