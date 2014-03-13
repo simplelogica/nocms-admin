@@ -31,9 +31,10 @@ module NoCms
         container[:error] << message
       end
 
-      def messages types
-
-        @messages.select { |type, _| types.include? type }
+      def messages types = []
+        types.blank? ?
+          @messages :
+          @messages.select { |type, _| types.include? type }
       end
 
     end

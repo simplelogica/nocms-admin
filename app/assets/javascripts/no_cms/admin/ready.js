@@ -1,4 +1,3 @@
-var NoCMS = {};
 
 
 $(document).ready(function() {

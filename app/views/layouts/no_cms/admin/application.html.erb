@@ -58,7 +58,7 @@
 
 
 <section id="log-bar">
-  Log / Info messages go here!
+
 </section>
 
 
@@ -70,6 +70,13 @@
 <%= yield :js %>
 <script type="text/javascript">
   $(function(){
+
+    NoCMS.Admin.Logger().displayAllMessages();
+    <% @logger.messages.each do |type, messages| %>
+      <% messages.each do |message| %>
+        NoCMS.Admin.Logger().addMessage(<%= raw type.to_json %>, <%= raw message.to_json %>)
+      <% end %>
+    <% end %>
     <%= yield :ready_js %>
   });
 </script>
