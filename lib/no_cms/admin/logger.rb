@@ -14,21 +14,21 @@ module NoCms
       end
 
       def info message, later=false
-        container = messages_container later
-        container[:info] ||= []
-        container[:info] << message
+        add_message :info, message, later
       end
 
       def warning message, later=false
-        container = messages_container later
-        container[:warning] ||= []
-        container[:warning] << message
+        add_message :warning, message, later
       end
 
       def error message, later=false
+        add_message :error, message, later
+      end
+
+      def add_message type, message, later=false
         container = messages_container later
-        container[:error] ||= []
-        container[:error] << message
+        container[type] ||= []
+        container[type] << message
       end
 
       def messages types = []
