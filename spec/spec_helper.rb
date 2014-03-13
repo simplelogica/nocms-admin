@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -13,6 +14,8 @@ Dir[Rails.root.join("../support/**/*.rb")].each { |f| puts f; require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
+
+  Capybara.javascript_driver = :poltergeist
 
   # Avoid repeating FactoryGirl
   config.include FactoryGirl::Syntax::Methods
