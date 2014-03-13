@@ -2,6 +2,9 @@ en:
   no_cms:
     admin:
       shared:
+        console_log:
+          clear: Clear
+          clear_title: Clear log
         secondary_menu_toolbar:
           filter: Filter
           new: New

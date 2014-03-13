@@ -579,13 +579,46 @@ body {
   cursor: pointer;
 
   border-top: 1px solid $bg;
-  background: darken($bg, 10%);
-  color: lighten($bg, 20%);
+  background-color: darken($bg, 10%);
   overflow:hidden;
 
   &.expanded {
     height: 50%;
     overflow: auto;
+  }
+
+  > span#js-clear-log {
+    display: block;
+    height: 24px;
+    padding: 4px 22px 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: image-url('no_cms/admin/ico-mini-delete.png') right center no-repeat;
+
+    font-weight: 400;
+    color: #fff;
+  }
+
+  > p {
+    margin: 0;
+    padding: 0;
+    color: lighten($bg, 30%);
+    font-weight: 700;
+    > time {
+      font-weight: 400;
+      &:after {
+        content: ' ››› '
+      }
+    }
+    &.warning {
+      $col: hsl( 40, saturation($accent), lightness($accent));
+      color: $col;
+    }
+    &.error {
+      $col: hsl( 0, saturation($accent), lightness($accent));
+      color: $col;
+    }
   }
 }
 
@@ -1053,6 +1086,34 @@ section#content-area {
   .lang {
     > a {
       color: #000;
+    }
+  }
+
+  //
+  // Warning error and info msg
+  //
+  .content {
+    .msg {
+      padding-top: 12px;
+      /* Colors are based on Accent color */
+      &.info {
+        $col: hsl( 190, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
+      &.warning {
+        $col: hsl( 40, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
+      &.error {
+        $col: hsl( 0, saturation($accent), lightness($accent));
+        border-bottom: 1px solid darken($col, 20%);
+        border-left: 4px solid darken($col, 20%);
+        background-color: lighten($col, 25%);
+      }
     }
   }
 }

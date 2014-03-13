@@ -1,0 +1,2 @@
+var NoCMS = {};
+NoCMS.Admin = {};
