@@ -726,21 +726,63 @@ $pagenav_text_color: lighten($bg, 30%);
   }
 }
 
+
+//
+// Mini options on the page listing
+//
+
 .mo,
 #mini-options {
   position: absolute;
-  width: 100px;
-  height: 39px;
   top: 0;
   right: 0;
-  background: red;
-  color: #fff;
+  background: $bg;
+  border: 1px solid lighten($bg, 20%);
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
   z-index: 2;
 
   opacity: 0;
 
+  /* Remove space between icons */
+  font-size: 0;
+
   &:hover {
     opacity: 1;
+  }
+
+  a,
+  input {
+    display: inline-block;
+    width: 24px;
+    height: 23px;
+    float: right;
+    margin: 0;
+    padding: 0;
+    background-color: desaturate(darken($accent, 20%), 20%);
+    border: none;
+    border-left: 1px solid lighten($bg, 10%) !important;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &.active,
+    &:hover {
+      background-color: $accent;
+    }
+    &.ico-mini-show-hide {
+      background-image: image-url('no_cms/admin/ico-mini-show-hide.png');
+    }
+    &.ico-mini-move-up {
+      background-image: image-url('no_cms/admin/ico-mini-move-up.png');
+    }
+    &.ico-mini-move-down {
+      background-image: image-url('no_cms/admin/ico-mini-move-down.png');
+    }
+    &.ico-mini-delete {
+      background-image: image-url('no_cms/admin/ico-mini-delete.png');
+    }
   }
 }
 
