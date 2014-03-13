@@ -1,6 +1,6 @@
 NoCMS.Admin.Logger = function() {
   this.log_messages_container = $('#log-bar');
-  this.clear_log_messages_link = this.log_messages_container.find('#log-bar-clear');
+  this.clear_log_messages_link = this.log_messages_container.find('#js-clear-log');
   this.store_log_messages_key = 'no_cms_admin_logger_messages';
   this.log_messages = store.get(this.store_log_messages_key);
 

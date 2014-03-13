@@ -1,5 +1,5 @@
 <section id="log-bar">
-  <%= link_to t('.remove'), '#', id: 'log-bar-clear' %>
+  <span id="js-clear-log" title="<%= t('.clear_title')%>"><%= t('.clear')%></span>
 </section>
 <% content_for :ready_js do %>
   var logger = new NoCMS.Admin.Logger();
