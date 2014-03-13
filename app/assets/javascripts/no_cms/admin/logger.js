@@ -1,29 +1,48 @@
 NoCMS.Admin.Logger = function() {
-  var log_messages_container = $('#log-bar'),
-    store_log_messages_key = 'no_cms_admin_logger_messages',
-    log_messages = store.get(store_log_messages_key),
-    that = this;
+  this.log_messages_container = $('#log-bar');
+  this.clear_log_messages_link = this.log_messages_container.find('#log-bar-clear');
+  this.store_log_messages_key = 'no_cms_admin_logger_messages';
+  this.log_messages = store.get(this.store_log_messages_key);
+
+  that = this;
 
   if(typeof(log_messages) == 'undefined'){
     log_messages = [];
   }
 
-  return {
-    addMessage: function(type, message) {
-      log_messages.unshift({'type': type, 'message': message, 'time': new Date()})
-      store.set(store_log_messages_key, log_messages);
-      this.displayMessage(0);
-    },
-    displayAllMessages: function() {
-      log_messages_container.html('');
-      for(var i = log_messages.length-1; i >= 0; i--) {
-        this.displayMessage(i)
-      }
-    },
-    displayMessage: function(message_index) {
-      var message = log_messages[message_index];
-      log_messages_container.prepend('<p class="row msg '+message.type+'"><time>'+message.time+'</time>'+message.message+'</p>')
-    }
-  };
+  this.displayAllMessages();
 
+  this.clear_log_messages_link.on('click', function(){
+    that.clearMessages(true);
+  })
+}
+
+
+
+
+NoCMS.Admin.Logger.prototype.addMessage = function(type, message) {
+  this.log_messages.unshift({'type': type, 'message': message, 'time': new Date()})
+  store.set(this.store_log_messages_key, this.log_messages);
+  this.displayMessage(0);
+}
+
+NoCMS.Admin.Logger.prototype.displayAllMessages = function() {
+  this.clearMessages(false);
+  for(var i = this.log_messages.length-1; i >= 0; i--) {
+    this.displayMessage(i);
+  }
+}
+
+NoCMS.Admin.Logger.prototype.clearMessages = function(clear_from_store) {
+  this.log_messages_container.find('.msg').remove();
+  if(clear_from_store) {
+    this.log_messages = [];
+    store.set(this.store_log_messages_key, this.log_messages);
+  }
+
+};
+
+NoCMS.Admin.Logger.prototype.displayMessage = function(message_index) {
+  var message = this.log_messages[message_index];
+  this.log_messages_container.prepend('<p class="msg '+message.type+'"><time>'+message.time+'</time>'+message.message+'</p>');
 }
