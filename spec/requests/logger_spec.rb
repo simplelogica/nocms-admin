@@ -30,4 +30,19 @@ describe NoCms::Admin::Logger do
 
   end
 
+  context "console log", js: true do
+
+    before do
+      visit new_lorem_ipsum_path
+    end
+
+    subject { page }
+
+    it("should show message in console") {
+      expect(subject).to have_selector('#log-bar .msg.info', text: 'info message now')
+    }
+
+  end
+
+
 end
