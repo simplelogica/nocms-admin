@@ -6,8 +6,8 @@ NoCMS.Admin.Logger = function() {
 
   that = this;
 
-  if(typeof(log_messages) == 'undefined'){
-    log_messages = [];
+  if(typeof(this.log_messages) == 'undefined'){
+    this.log_messages = [];
   }
 
   this.displayAllMessages();
