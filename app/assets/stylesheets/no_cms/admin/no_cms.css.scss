@@ -752,6 +752,12 @@ $pagenav_text_color: lighten($bg, 30%);
     opacity: 1;
   }
 
+  form {
+    display: inline;
+    > div {
+      display: inline;
+    }
+  }
   input[type=submit],
   button,
   > a {
@@ -964,7 +970,7 @@ aside#col-2 {
       }
       &.oculto {
         > a {
-          background: darken($bg, 10%) image-url('nocms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1.png') 0 0 repeat;
+          background: darken($bg, 10%) image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1.png') 0 0 repeat;
         }
       }
       > ul {
