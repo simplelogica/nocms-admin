@@ -752,6 +752,12 @@ $pagenav_text_color: lighten($bg, 30%);
     opacity: 1;
   }
 
+  form {
+    display: inline;
+    > div {
+      display: inline;
+    }
+  }
   input[type=submit],
   button,
   > a {
