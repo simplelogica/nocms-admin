@@ -15,4 +15,26 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
       @template.raw(error_messages.map{|e|  @template.content_tag('li', e)}.join),
       class: 'error')
   end
+
+  def label_with_tooltip(method, text = nil, options = {}, &block)
+
+    # We may receive options in text (because we don't get text)
+    if text.is_a?(Hash) && options.empty?
+      options = text
+      text = nil
+    end
+    tooltip = options.delete :tooltip
+    text = object.class.human_attribute_name(method) if text.nil?
+    html = label method, text, options do
+      @template.concat @template.info_tooltip(tooltip) unless tooltip.blank?
+      if block_given?
+        block.call
+      else
+        @template.concat(text)
+      end
+    end
+
+    html
+
+  end
 end
