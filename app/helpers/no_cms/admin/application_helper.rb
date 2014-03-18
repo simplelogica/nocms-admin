@@ -12,6 +12,10 @@ module NoCms
         form_for record, options.merge(builder: NoCms::Admin::FormBuilder), &block
       end
 
+      def info_tooltip tooltip
+        link_to '?', '#', class: 'info-tooltip', 'data-tooltip' => tooltip
+      end
+
     end
   end
 end
