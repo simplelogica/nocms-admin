@@ -37,4 +37,12 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
     html
 
   end
+
+  def fields_for_translations &block
+    I18n.available_locales.each { |l| object.translation_for(l) }
+    fields_for :translations do |f_translation|
+      @template.concat f_translation.hidden_field :locale if f_translation.object.new_record?
+      block.call(f_translation)
+    end
+  end
 end
