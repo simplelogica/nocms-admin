@@ -1,6 +1,6 @@
 class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
 
-  [:text_field, :text_area, :select].each do |helper|
+  [:text_field, :text_area, :select, :file_field].each do |helper|
     define_method helper do |attribute, *args|
       html = super attribute, *args
       html += errors_field(attribute)
