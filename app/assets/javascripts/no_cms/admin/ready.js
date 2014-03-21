@@ -44,6 +44,26 @@ $(document).ready(function() {
     $('.filter-bar').toggle();
   });
 
+  // Filter button
+  $('a[data-preview]').on('click', function(e) {
+    e.preventDefault();
+    var form = $(this).closest('form'),
+      submit = form.find('input[type=submit]'),
+      target = form.attr('target'),
+      action = form.attr('action'),
+      new_action = $(this).attr('href');
+
+    target = (typeof(target) == 'undefined') ? '' : target;
+    action = (typeof(action) == 'undefined') ? '' : action;
+
+    form.attr('target', '_blank');
+    form.attr('action', new_action);
+    submit.click();
+    form.attr('target', target);
+    form.attr('action', action);
+
+  });
+
   // Go full-screen in content area
   $('#js-go-full-screen').on('click', function(e) {
     e.preventDefault();
