@@ -3,7 +3,7 @@
 </section>
 <% content_for :ready_js do %>
   var logger = new NoCMS.Admin.Logger();
-  <% @logger.messages.each do |type, messages| %>
+  <% @nocms_logger.messages.each do |type, messages| %>
     <% messages.each do |message| %>
       logger.addMessage(<%= raw type.to_json %>, <%= raw message.to_json %>)
     <% end %>
