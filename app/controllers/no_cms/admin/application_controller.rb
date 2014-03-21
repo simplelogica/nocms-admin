@@ -5,7 +5,7 @@ module NoCms
       before_filter :initialize_logger
 
       def initialize_logger
-        @logger = NoCms::Admin::Logger.new request
+        @nocms_logger = NoCms::Admin::Logger.new request
       end
     end
   end

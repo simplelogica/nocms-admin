@@ -1,5 +1,5 @@
 <% types ||= [:info, :warning, :error] %>
-<% @logger.messages(types).each do |type, messages| %>
+<% @nocms_logger.messages(types).each do |type, messages| %>
   <% messages.each do |message| %>
     <div class="row msg <%= type %>">
       <%= message %>
