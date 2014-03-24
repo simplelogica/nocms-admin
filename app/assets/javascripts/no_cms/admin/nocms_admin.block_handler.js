@@ -50,9 +50,13 @@ NoCMS.Admin.BlockHandler = function() {
   });
 
   this.updateBlock = function(block, new_layout){
+    this.saveBlockState(block);
+
     new_template = block_templates.filter('#new_content_block_' + new_layout)
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
     this.modifyInputNames(block, block.find('.block_layout_selector').attr('id').match(/_([0-9]*)_/)[1]);
+
+    this.restoreBlockState(block);
   }
 
   this.switchBlockPositions = function(block, next_block){
@@ -101,8 +105,51 @@ NoCMS.Admin.BlockHandler = function() {
     draft_field.val(draft_field.val() == '1' ? '0' : '1');
   }
 
+  this.saveBlockState = function(block) {
+    var field_name_regexp = new RegExp(/\[([^\[]*)\]$/),
+      block = $(block),
+      state = block.attr('data-block-state');
+
+    if(typeof(state) == 'undefined'){
+      state = {};
+    } else {
+      state = JSON.parse(state);
+    }
+
+    $(block).find('textarea, input[type="text"], select').each(function(){
+      field_name = field_name_regexp.exec(this.name)[1];
+      state[field_name] = $(this).val();
+    });
+
+    block.attr('data-block-state', JSON.stringify(state));
+  }
+
+  this.restoreBlockState = function(block) {
+    var field_name_regexp = new RegExp(/\[([^\[]*)\]$/),
+      block = $(block),
+      state = block.attr('data-block-state');
+
+    if(typeof(state) == 'undefined'){
+      state = {};
+    } else {
+      state = JSON.parse(state);
+    }
+
+    $(block).find('textarea, input[type="text"], select').each(function(){
+      field_name = field_name_regexp.exec(this.name)[1];
+      if((typeof(state[field_name]) != 'undefined') && (state[field_name] != '')){
+        $(this).val(state[field_name]);
+      }
+    });
+
+  }
+
   block_templates.each(function() {
     $(this).detach();
   });
+
+  $('.block').each(function(){
+    that.saveBlockState(this);
+  })
 
 }
