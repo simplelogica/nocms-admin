@@ -116,7 +116,7 @@ NoCMS.Admin.BlockHandler = function() {
       state = JSON.parse(state);
     }
 
-    $(block).find('textarea, input[type="text"]').each(function(){
+    $(block).find('textarea, input[type="text"], select').each(function(){
       field_name = field_name_regexp.exec(this.name)[1];
       state[field_name] = $(this).val();
     });
@@ -135,7 +135,7 @@ NoCMS.Admin.BlockHandler = function() {
       state = JSON.parse(state);
     }
 
-    $(block).find('textarea, input[type="text"]').each(function(){
+    $(block).find('textarea, input[type="text"], select').each(function(){
       field_name = field_name_regexp.exec(this.name)[1];
       if((typeof(state[field_name]) != 'undefined') && (state[field_name] != '')){
         $(this).val(state[field_name]);
