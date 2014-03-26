@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require ./libraries/store.min
 //= require ./no_cms_admin
+//= require ./nocms_admin.block_handler
 //= require ./logger
 //= require ./ready
 
