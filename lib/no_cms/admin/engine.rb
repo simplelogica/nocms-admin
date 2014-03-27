@@ -1,3 +1,5 @@
+require 'jquery-rails'
+
 module NoCms
   module Admin
     class Engine < ::Rails::Engine
