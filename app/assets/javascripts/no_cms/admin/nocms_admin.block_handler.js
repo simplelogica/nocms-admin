@@ -62,8 +62,8 @@ NoCMS.Admin.BlockHandler = function() {
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
 
     var block_layout_field = block.find('.block_layout_selector'),
-      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]*\]\[layout\]/)[1],
-      position = block_layout_field.attr('id').match(/_([0-9]*)_/)[1]
+      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]+\]\[layout\]/)[1],
+      position = block_layout_field.attr('id').match(/_([0-9]+)_/)[1]
 
     this.modifyInputNames(block, name, position);
 
@@ -91,7 +91,7 @@ NoCMS.Admin.BlockHandler = function() {
       parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[layout\]/)[1]
       parent_name += '[children_attributes]'
     } else {
-      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]*\]\[layout\]/)[1]
+      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]+\]\[layout\]/)[1]
     }
 
     this.modifyInputNames(new_block, parent_name, position);
@@ -102,15 +102,16 @@ NoCMS.Admin.BlockHandler = function() {
 
   this.modifyInputNames = function(block, parent_name, position){
 
+    var parent_id = parent_name.replace(/\[/g, '_').replace(/\]/g, '_');
 
     block.find('[for]').each(function(){
-      $(this).attr('for', $(this).attr('for').replace(/_[0-9]*_/, '_'+position+'_'))
+      $(this).attr('for', $(this).attr('for').replace(/^.*_[0-9]+_/, parent_id + position +'_'))
     });
     block.find('[id]').each(function(){
-      $(this).attr('id', $(this).attr('id').replace(/_[0-9]*_/, '_'+position+'_'))
+      $(this).attr('id', $(this).attr('id').replace(/^.*_[0-9]+_/, parent_id + position+'_'))
     });
     block.find('[name]').each(function(){
-      $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]*\]/, parent_name + '['+position+']'));
+      $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]+\]/, parent_name + '['+position+']'));
     });
 
   }
