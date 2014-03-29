@@ -5,21 +5,27 @@ NoCMS.Admin.BlockHandler = function() {
 
 
   var default_layout_block = $('.block.new').first(),
-    block_placeholder = $('#content_blocks_placeholder'),
-    new_content_link = $('#new_content_block'),
+    block_placeholder_selector = '.content_blocks_placeholder',
+    block_layout_select_selector = block_placeholder_selector + ' .block_layout_selector',
+    block_move_up_selector = block_placeholder_selector + ' .ico-mini-move-up',
+    block_move_down_selector = block_placeholder_selector + ' .ico-mini-move-down',
+    block_hide_selector = block_placeholder_selector + ' .ico-mini-show-hide',
+    block_delete_selector = block_placeholder_selector + ' .ico-mini-delete',
+    new_content_link_selector = '.new_content_block',
     block_templates = $('.new.block'),
+    body = $('body'),
     that = this;
 
-  new_content_link.on('click', function(e){
+  body.on('click', new_content_link_selector, function(e){
     e.preventDefault();
-    that.createBlock();
+    that.createBlock($(this).closest('.content_blocks_placeholder'));
   });
 
-  block_placeholder.on('change', '.block_layout_selector', function(e){
-    that.updateBlock($(this).parents('.block'), $(this).val());
+  body.on('change', block_layout_select_selector , function(e){
+    that.updateBlock($(this).closest('.block'), $(this).val());
   });
 
-  block_placeholder.on('click', '.ico-mini-move-down', function(e){
+  body.on('click', block_move_up_selector , function(e){
     e.preventDefault();
     var block = $(this).parents('.block'),
       next_blocks = block.nextAll('.block');
@@ -29,7 +35,7 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  block_placeholder.on('click', '.ico-mini-move-up', function(e){
+  body.on('click', block_move_down_selector, function(e){
     e.preventDefault();
     var block = $(this).parents('.block'),
       previous_blocks = block.prevAll('.block');
@@ -39,12 +45,12 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  block_placeholder.on('click', '.ico-mini-show-hide', function(e){
+  body.on('click', block_hide_selector, function(e){
     e.preventDefault();
     that.toggleDraft($(this).parents('.block'));
   });
 
-  block_placeholder.on('click', '.ico-mini-delete', function(e){
+  body.on('click', block_delete_selector, function(e){
     e.preventDefault();
     that.toggleDestroy($(this).parents('.block'));
   });
@@ -68,7 +74,7 @@ NoCMS.Admin.BlockHandler = function() {
     next_block.after(block);
   }
 
-  this.createBlock = function(){
+  this.createBlock = function(placeholder){
     var position = $('.block').not('.new').length;
     new_block = default_layout_block.clone();
     new_block.removeClass('new');
@@ -76,7 +82,7 @@ NoCMS.Admin.BlockHandler = function() {
     this.modifyInputNames(new_block, position);
     new_block.find('.position').val(position);
 
-    block_placeholder.append(new_block);
+    placeholder.append(new_block);
   }
 
   this.modifyInputNames = function(block, position){
