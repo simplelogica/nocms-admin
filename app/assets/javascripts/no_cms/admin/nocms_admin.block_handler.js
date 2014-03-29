@@ -60,7 +60,12 @@ NoCMS.Admin.BlockHandler = function() {
 
     new_template = block_templates.filter('#new_content_block_' + new_layout)
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
-    this.modifyInputNames(block, '', block.find('.block_layout_selector').attr('id').match(/_([0-9]*)_/)[1]);
+
+    var block_layout_field = block.find('.block_layout_selector'),
+      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]*\]\[layout\]/)[1],
+      position = block_layout_field.attr('id').match(/_([0-9]*)_/)[1]
+
+    this.modifyInputNames(block, name, position);
 
     this.restoreBlockState(block);
   }
