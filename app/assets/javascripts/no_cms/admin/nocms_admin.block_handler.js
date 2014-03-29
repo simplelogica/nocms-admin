@@ -60,7 +60,7 @@ NoCMS.Admin.BlockHandler = function() {
 
     new_template = block_templates.filter('#new_content_block_' + new_layout)
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
-    this.modifyInputNames(block, block.find('.block_layout_selector').attr('id').match(/_([0-9]*)_/)[1]);
+    this.modifyInputNames(block, '', block.find('.block_layout_selector').attr('id').match(/_([0-9]*)_/)[1]);
 
     this.restoreBlockState(block);
   }
@@ -75,17 +75,26 @@ NoCMS.Admin.BlockHandler = function() {
   }
 
   this.createBlock = function(placeholder){
-    var position = $('.block').not('.new').length;
+    var position = placeholder.find('.block').not('.new').length;
     new_block = default_layout_block.clone();
     new_block.removeClass('new');
     new_block.removeAttr('id');
-    this.modifyInputNames(new_block, position);
+    var parent_block_layout_field = placeholder.closest('.block').find('.block_layout_selector');
+    var parent_name = '';
+
+    if(parent_block_layout_field.length > 0) {
+      parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[layout\]/)[1]
+      parent_name += '[children_attributes]'
+    }
+
+    this.modifyInputNames(new_block, parent_name, position);
     new_block.find('.position').val(position);
 
     placeholder.append(new_block);
   }
 
-  this.modifyInputNames = function(block, position){
+  this.modifyInputNames = function(block, parent_name, position){
+
 
     block.find('[for]').each(function(){
       $(this).attr('for', $(this).attr('for').replace(/_[0-9]*_/, '_'+position+'_'))
@@ -94,7 +103,11 @@ NoCMS.Admin.BlockHandler = function() {
       $(this).attr('id', $(this).attr('id').replace(/_[0-9]*_/, '_'+position+'_'))
     });
     block.find('[name]').each(function(){
-      $(this).attr('name', $(this).attr('name').replace(/\[[0-9]*\]/, '['+position+']'))
+      if(parent_name == '') {
+        $(this).attr('name', $(this).attr('name').replace(/\[[0-9]*\]/, '['+position+']'))
+      } else {
+        $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]*\]/, parent_name + '['+position+']'));
+      }
     });
 
   }
