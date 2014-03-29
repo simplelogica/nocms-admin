@@ -90,6 +90,8 @@ NoCMS.Admin.BlockHandler = function() {
     if(parent_block_layout_field.length > 0) {
       parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[layout\]/)[1]
       parent_name += '[children_attributes]'
+    } else {
+      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]*\]\[layout\]/)[1]
     }
 
     this.modifyInputNames(new_block, parent_name, position);
@@ -108,11 +110,7 @@ NoCMS.Admin.BlockHandler = function() {
       $(this).attr('id', $(this).attr('id').replace(/_[0-9]*_/, '_'+position+'_'))
     });
     block.find('[name]').each(function(){
-      if(parent_name == '') {
-        $(this).attr('name', $(this).attr('name').replace(/\[[0-9]*\]/, '['+position+']'))
-      } else {
-        $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]*\]/, parent_name + '['+position+']'));
-      }
+      $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]*\]/, parent_name + '['+position+']'));
     });
 
   }
