@@ -98,6 +98,18 @@ NoCMS.Admin.BlockHandler = function() {
     new_block.find('.position').val(position);
 
     placeholder.append(new_block);
+
+    this.filterBlockLayouts(new_block);
+  }
+
+  this.filterBlockLayouts = function(block) {
+    var nest_level = block.parents('.block').length;
+
+    block.find('.block_layout_selector option[data-nest-levels]').each(function(){
+      if ($(this).data('nest-levels').indexOf(nest_level) == -1) {
+        $(this).detach();
+      }
+    });
   }
 
   this.modifyInputNames = function(block, parent_name, position){
@@ -172,6 +184,7 @@ NoCMS.Admin.BlockHandler = function() {
   });
 
   $('.block').each(function(){
+    that.filterBlockLayouts($(this));
     that.saveBlockState(this);
   })
 
