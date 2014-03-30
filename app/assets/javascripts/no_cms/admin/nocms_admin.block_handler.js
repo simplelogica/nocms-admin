@@ -120,7 +120,7 @@ NoCMS.Admin.BlockHandler = function() {
       block.remove();
     } else {
       if(layout_options.length == 1) {
-        layout_selector.closest('.row').hide();
+        layout_selector.hide();
       }
       if(block.hasClass('new')) {
         layout_selector.change();

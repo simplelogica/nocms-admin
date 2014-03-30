@@ -71,6 +71,29 @@ $(document).ready(function() {
     $('body').removeClass('col-1-only').toggleClass('go-full-screen');
   });
 
+  // Collapse block
+  $('.js-collapse-block').on('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.block.row').toggleClass('collapsed');
+    /* Act on the event */
+  });
+
+  // Collapse all blocks
+  $('.js-collapse-all-blocks').on('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.has-children').find('.block.row').addClass('collapsed');
+  });
+
+  // Collapse on load
+  $('.block.row').toggleClass('collapsed');
+
+  // Expandir / clapsar grupos
+  $('.js-expand-group').on('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.has-children').toggleClass('collapsed');
+  });
+
+
   // Show mini-options
 /*  $('aside#col-2 .content').on('mouseenter', 'a', function(e) {
     e.preventDefault();
