@@ -82,7 +82,6 @@ NoCMS.Admin.BlockHandler = function() {
   this.createBlock = function(placeholder){
     var position = placeholder.find('> .block').not('.new').length;
     new_block = default_layout_block.clone();
-    new_block.removeClass('new');
     new_block.removeAttr('id');
     var parent_block_layout_field = placeholder.closest('.block').find('.block_layout_selector');
     var parent_name = '';
@@ -100,16 +99,33 @@ NoCMS.Admin.BlockHandler = function() {
     placeholder.append(new_block);
 
     this.filterBlockLayouts(new_block);
+
+    new_block.removeClass('new');
+
   }
 
   this.filterBlockLayouts = function(block) {
-    var nest_level = block.parents('.block').length;
+    var nest_level = block.parents('.block').length,
+      layout_selector = block.find('>.row >.block_layout_selector')
 
-    block.find('.block_layout_selector option[data-nest-levels]').each(function(){
+    layout_selector.find('option[data-nest-levels]').each(function(){
       if ($(this).data('nest-levels').indexOf(nest_level) == -1) {
-        $(this).detach();
+        $(this).remove();
       }
     });
+
+    var layout_options = layout_selector.find('option');
+
+    if(layout_options.length == 0) {
+      block.remove();
+    } else {
+      if(layout_options.length == 1) {
+        layout_selector.closest('.row').hide();
+      }
+      if(block.hasClass('new')) {
+        layout_selector.change();
+      }
+    }
   }
 
   this.modifyInputNames = function(block, parent_name, position){
@@ -183,7 +199,7 @@ NoCMS.Admin.BlockHandler = function() {
     $(this).detach();
   });
 
-  $('.block').each(function(){
+  $('.block').not('.new').each(function(){
     that.filterBlockLayouts($(this));
     that.saveBlockState(this);
   })
