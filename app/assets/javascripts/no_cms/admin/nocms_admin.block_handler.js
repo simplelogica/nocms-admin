@@ -62,8 +62,8 @@ NoCMS.Admin.BlockHandler = function() {
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
 
     var block_layout_field = block.find('.block_layout_selector'),
-      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]+\]\[layout\]/)[1],
-      position = block_layout_field.attr('id').match(/_([0-9]+)_/)[1]
+      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]+\][^0-9]*/)[1],
+      position = block_layout_field.attr('id').match(/_([0-9]+)_[^0-9]*$/)[1]
 
     this.modifyInputNames(block, name, position);
 
@@ -80,7 +80,7 @@ NoCMS.Admin.BlockHandler = function() {
   }
 
   this.createBlock = function(placeholder){
-    var position = placeholder.find('.block').not('.new').length;
+    var position = placeholder.find('> .block').not('.new').length;
     new_block = default_layout_block.clone();
     new_block.removeClass('new');
     new_block.removeAttr('id');
