@@ -52,7 +52,7 @@ NoCMS.Admin.BlockHandler = function() {
 
   body.on('click', block_delete_selector, function(e){
     e.preventDefault();
-    that.toggleDestroy($(this).parents('.block'));
+    that.toggleDestroy($(this).closest('.block'));
   });
 
   this.updateBlock = function(block, new_layout){
