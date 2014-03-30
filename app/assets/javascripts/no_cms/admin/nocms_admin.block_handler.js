@@ -25,9 +25,9 @@ NoCMS.Admin.BlockHandler = function() {
     that.updateBlock($(this).closest('.block'), $(this).val());
   });
 
-  body.on('click', block_move_up_selector , function(e){
+  body.on('click', block_move_down_selector , function(e){
     e.preventDefault();
-    var block = $(this).parents('.block'),
+    var block = $(this).closest('.block'),
       next_blocks = block.nextAll('.block');
 
     if(next_blocks.length > 0) {
@@ -35,9 +35,9 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  body.on('click', block_move_down_selector, function(e){
+  body.on('click', block_move_up_selector, function(e){
     e.preventDefault();
-    var block = $(this).parents('.block'),
+    var block = $(this).closest('.block'),
       previous_blocks = block.prevAll('.block');
 
     if(previous_blocks.length > 0) {
