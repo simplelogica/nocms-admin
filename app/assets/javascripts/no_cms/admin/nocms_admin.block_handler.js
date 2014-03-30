@@ -47,7 +47,7 @@ NoCMS.Admin.BlockHandler = function() {
 
   body.on('click', block_hide_selector, function(e){
     e.preventDefault();
-    that.toggleDraft($(this).parents('.block'));
+    that.toggleDraft($(this).closest('.block'));
   });
 
   body.on('click', block_delete_selector, function(e){
