@@ -5,23 +5,29 @@ NoCMS.Admin.BlockHandler = function() {
 
 
   var default_layout_block = $('.block.new').first(),
-    block_placeholder = $('#content_blocks_placeholder'),
-    new_content_link = $('#new_content_block'),
+    block_placeholder_selector = '.content_blocks_placeholder',
+    block_layout_select_selector = block_placeholder_selector + ' .block_layout_selector',
+    block_move_up_selector = block_placeholder_selector + ' .ico-mini-move-up',
+    block_move_down_selector = block_placeholder_selector + ' .ico-mini-move-down',
+    block_hide_selector = block_placeholder_selector + ' .ico-mini-show-hide',
+    block_delete_selector = block_placeholder_selector + ' .ico-mini-delete',
+    new_content_link_selector = '.new_content_block',
     block_templates = $('.new.block'),
+    body = $('body'),
     that = this;
 
-  new_content_link.on('click', function(e){
+  body.on('click', new_content_link_selector, function(e){
     e.preventDefault();
-    that.createBlock();
+    that.createBlock($(this).closest('.content_blocks_placeholder'));
   });
 
-  block_placeholder.on('change', '.block_layout_selector', function(e){
-    that.updateBlock($(this).parents('.block'), $(this).val());
+  body.on('change', block_layout_select_selector , function(e){
+    that.updateBlock($(this).closest('.block'), $(this).val());
   });
 
-  block_placeholder.on('click', '.ico-mini-move-down', function(e){
+  body.on('click', block_move_down_selector , function(e){
     e.preventDefault();
-    var block = $(this).parents('.block'),
+    var block = $(this).closest('.block'),
       next_blocks = block.nextAll('.block');
 
     if(next_blocks.length > 0) {
@@ -29,9 +35,9 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  block_placeholder.on('click', '.ico-mini-move-up', function(e){
+  body.on('click', block_move_up_selector, function(e){
     e.preventDefault();
-    var block = $(this).parents('.block'),
+    var block = $(this).closest('.block'),
       previous_blocks = block.prevAll('.block');
 
     if(previous_blocks.length > 0) {
@@ -39,14 +45,14 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  block_placeholder.on('click', '.ico-mini-show-hide', function(e){
+  body.on('click', block_hide_selector, function(e){
     e.preventDefault();
-    that.toggleDraft($(this).parents('.block'));
+    that.toggleDraft($(this).closest('.block'));
   });
 
-  block_placeholder.on('click', '.ico-mini-delete', function(e){
+  body.on('click', block_delete_selector, function(e){
     e.preventDefault();
-    that.toggleDestroy($(this).parents('.block'));
+    that.toggleDestroy($(this).closest('.block'));
   });
 
   this.updateBlock = function(block, new_layout){
@@ -54,7 +60,12 @@ NoCMS.Admin.BlockHandler = function() {
 
     new_template = block_templates.filter('#new_content_block_' + new_layout)
     block.find('.layout_fields').html(new_template.find('.layout_fields').html());
-    this.modifyInputNames(block, block.find('.block_layout_selector').attr('id').match(/_([0-9]*)_/)[1]);
+
+    var block_layout_field = block.find('.block_layout_selector'),
+      name = block_layout_field.attr('name').match(/^(.*)\[[0-9]+\][^0-9]*/)[1],
+      position = block_layout_field.attr('id').match(/_([0-9]+)_[^0-9]*$/)[1]
+
+    this.modifyInputNames(block, name, position);
 
     this.restoreBlockState(block);
   }
@@ -68,27 +79,39 @@ NoCMS.Admin.BlockHandler = function() {
     next_block.after(block);
   }
 
-  this.createBlock = function(){
-    var position = $('.block').not('.new').length;
+  this.createBlock = function(placeholder){
+    var position = placeholder.find('> .block').not('.new').length;
     new_block = default_layout_block.clone();
     new_block.removeClass('new');
     new_block.removeAttr('id');
-    this.modifyInputNames(new_block, position);
+    var parent_block_layout_field = placeholder.closest('.block').find('.block_layout_selector');
+    var parent_name = '';
+
+    if(parent_block_layout_field.length > 0) {
+      parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[layout\]/)[1]
+      parent_name += '[children_attributes]'
+    } else {
+      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]+\]\[layout\]/)[1]
+    }
+
+    this.modifyInputNames(new_block, parent_name, position);
     new_block.find('.position').val(position);
 
-    block_placeholder.append(new_block);
+    placeholder.append(new_block);
   }
 
-  this.modifyInputNames = function(block, position){
+  this.modifyInputNames = function(block, parent_name, position){
+
+    var parent_id = parent_name.replace(/\[/g, '_').replace(/\]/g, '_');
 
     block.find('[for]').each(function(){
-      $(this).attr('for', $(this).attr('for').replace(/_[0-9]*_/, '_'+position+'_'))
+      $(this).attr('for', $(this).attr('for').replace(/^.*_[0-9]+_/, parent_id + position +'_'))
     });
     block.find('[id]').each(function(){
-      $(this).attr('id', $(this).attr('id').replace(/_[0-9]*_/, '_'+position+'_'))
+      $(this).attr('id', $(this).attr('id').replace(/^.*_[0-9]+_/, parent_id + position+'_'))
     });
     block.find('[name]').each(function(){
-      $(this).attr('name', $(this).attr('name').replace(/\[[0-9]*\]/, '['+position+']'))
+      $(this).attr('name', $(this).attr('name').replace(/^.*\[[0-9]+\]/, parent_name + '['+position+']'));
     });
 
   }
