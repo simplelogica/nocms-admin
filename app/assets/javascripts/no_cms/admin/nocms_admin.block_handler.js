@@ -105,10 +105,10 @@ NoCMS.Admin.BlockHandler = function() {
     var parent_name = '';
 
     if(parent_block_layout_field.length > 0) {
-      parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[layout\]/)[1]
+      parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[[^\[]+\]$/)[1]
       parent_name += '[children_attributes]'
     } else {
-      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]+\]\[layout\]/)[1]
+      parent_name = new_block.find('.block_layout_selector').attr('name').match(/^(.*)\[[0-9]+\]\[[^\[]+\]$/)[1]
     }
 
     this.modifyInputNames(new_block, parent_name, position);
