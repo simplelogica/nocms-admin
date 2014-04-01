@@ -17,5 +17,4 @@
 //= require ./nocms_admin.block_handler
 //= require ./logger
 //= require ./ready
-//= require ./ckeditor/ckeditor
 
