@@ -111,7 +111,7 @@ NoCMS.Admin.BlockHandler = function() {
       parent_name = parent_block_layout_field.attr('name').match(/^(.*)\[[^\[]+\]$/)[1]
       parent_name += '[children_attributes]'
     } else {
-      parent_name = old_name;
+      parent_name = old_name.match(/^(.*)\[[0-9]+\]$/)[1];
     }
 
     this.modifyInputNames(new_block, old_name, parent_name, position);
