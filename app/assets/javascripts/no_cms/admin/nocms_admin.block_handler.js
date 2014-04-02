@@ -85,7 +85,7 @@ NoCMS.Admin.BlockHandler = function() {
       old_block_layout_field = new_template.find('.block_layout_selector'),
       old_name = old_block_layout_field.attr('name').match(/^(.*\[[0-9]+\])[^0-9]*/)[1];
 
-    this.modifyInputNames(block, old_name, name, position);
+    this.modifyInputNames(block.find('.layout_fields'), old_name, name, position);
 
     this.restoreBlockState(block);
   }
