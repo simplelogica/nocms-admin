@@ -151,8 +151,8 @@ NoCMS.Admin.BlockHandler = function() {
 
   this.modifyInputNames = function(block, old_name, parent_name, position){
 
-    var parent_id = parent_name.replace(/\[/g, '_').replace(/\]/g, '_'),
-      old_id = old_name.replace(/\[/g, '_').replace(/\]/g, '_');
+    var parent_id = parent_name.replace(/\]\[/g, '_').replace(/\[/g, '_').replace(/\]/g, '_'),
+      old_id = old_name.replace(/\]\[/g, '_').replace(/\[/g, '_').replace(/\]/g, '_');
 
     block.find('[for]').each(function(){
       $(this).attr('for', $(this).attr('for').replace(old_id, parent_id + position +'_'))
