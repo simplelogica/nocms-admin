@@ -91,12 +91,11 @@ NoCMS.Admin.BlockHandler = function() {
   }
 
   this.switchBlockPositions = function(block, next_block){
-    var next_block_position = next_block.find('.position').val();
-
-    next_block.find('.position').val(block.find('.position').val());
-    block.find('.position').val(next_block_position);
-
     next_block.after(block);
+
+    next_block.find('.position').val(next_block.prevAll('.block').length);
+    block.find('.position').val(block.prevAll('.block').length);
+
   }
 
   this.createBlock = function(placeholder){
