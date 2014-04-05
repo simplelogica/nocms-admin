@@ -44,7 +44,7 @@ $(document).ready(function() {
     $('.filter-bar').toggle();
   });
 
-  // Filter button
+  // PREVIEW
   $('a[data-preview]').on('click', function(e) {
     e.preventDefault();
     var form = $(this).closest('form'),
@@ -56,12 +56,21 @@ $(document).ready(function() {
     target = (typeof(target) == 'undefined') ? '' : target;
     action = (typeof(action) == 'undefined') ? '' : action;
 
-    form.attr('target', '_blank');
+    $('body').addClass('previewed');
+    form.attr('target', 'prev-frame');
     form.attr('action', new_action);
     submit.click();
     form.attr('target', target);
     form.attr('action', action);
 
+  });
+
+  $('#responsive').change(function(){
+    $('[name=prev-frame]').prop('class', $(this).find(':selected').val());
+  });
+
+  $('#preview').on('click', '.close', function () {
+    $('body').removeClass('previewed');
   });
 
   // Go full-screen in content area

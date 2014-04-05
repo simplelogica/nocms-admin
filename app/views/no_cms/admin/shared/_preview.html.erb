@@ -1,0 +1,12 @@
+<% responsive = [["Desktop", "desktop"], ["Tablet Landscape", "tablet_l"], ["Tablet Portrait", "tablet_p"], ["Mobile Landscape", "mobile_l"], ["Mobile Portrait", "mobile_p"]] %>
+
+<section id="preview">
+  <div class="tool-bar-blocks">
+
+    <%= label_tag :responsive %>
+    <%= select_tag :responsive, options_for_select(responsive) %>
+
+    <%= link_to "Close", '#', class: 'btn close _m0' %>
+  </div>
+  <iframe name="prev-frame" src="/" class="desktop"></iframe>
+</section>

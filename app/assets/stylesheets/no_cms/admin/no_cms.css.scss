@@ -1771,3 +1771,73 @@ select {
     }
   }
 }
+
+
+// Preview block
+
+#preview {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: $tool_bar_h;
+  bottom: $log_bar_h;
+  width: $col_1_w+$col_2_w;
+  background: $bg_l10;
+  z-index: 2;
+  border-right: 2px solid $bg_d20;
+  .previewed & {display: block;}
+  iframe {
+    border: 0;
+    width: 250%;
+    height: 250%;
+    zoom: 0.40;
+    margin: 2%;
+    -webkit-transform: scale(0.40);
+       -moz-transform: scale(0.40);
+         -o-transform: scale(0.40);
+            transform: scale(0.40);
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    &.desktop {
+      margin: 0;
+    }
+    &.tablet_l {
+      width: 768px;
+      height: 518px;
+      zoom: 0.80;
+      -webkit-transform: scale(0.80);
+         -moz-transform: scale(0.80);
+           -o-transform: scale(0.80);
+              transform: scale(0.80);
+    }
+    &.tablet_p {
+      width: 518px;
+      height: 768px;
+      zoom: 0.80;
+      -webkit-transform: scale(0.80);
+         -moz-transform: scale(0.80);
+           -o-transform: scale(0.80);
+              transform: scale(0.80);
+    }
+    &.mobile_l {
+      width: 480px;
+      height: 320px;
+      zoom: 1;
+      -webkit-transform: scale(1);
+         -moz-transform: scale(1);
+           -o-transform: scale(1);
+              transform: scale(1);
+    }
+    &.mobile_p {
+      width: 320px;
+      height: 480px;
+      zoom: 1;
+      -webkit-transform: scale(1);
+         -moz-transform: scale(1);
+           -o-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+}
