@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>NºCMS</title>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.css">
+
+  <link rel="shortcut icon" href="img/favicon.png"/>
+  <link rel="apple-touch-icon" href="img/favicon_iOS.png"/>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css">
 
   <%= stylesheet_link_tag  "no_cms/admin/application", media: "all" %>
   <%= yield :stylesheets %>
   <%= render 'no_cms/admin/shared/extra_stylesheets' %>
+
+  <!-- GOOGLE FONTS -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
   <%= csrf_meta_tags %>
 </head>
@@ -59,10 +67,6 @@
 
 
 <%= render 'no_cms/admin/shared/console_log' %>
-
-
-
-<div id="mini-options"> ^ v x o </div>
 
 
 <%= javascript_include_tag "no_cms/admin/application" %>
