@@ -127,7 +127,7 @@ NoCMS.Admin.UI = {
       $all_listing_el = this.DOM.$aside_col_1.add(this.DOM.$aside_col_2);
 
     $all_listing_el.on('click', 'a', function(e) {
-      e.preventDefault();
+      // e.preventDefault();
       $(this).closest('.content').find('li').removeClass('current');
       $(this).parent().addClass('current');
     });
