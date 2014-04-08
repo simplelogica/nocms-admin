@@ -11,28 +11,10 @@ NoCMS.Admin.BlockHandler = function() {
     block_move_down_selector = block_placeholder_selector + ' .ico-mini-move-down',
     block_hide_selector = block_placeholder_selector + ' .ico-mini-show-hide',
     block_delete_selector = block_placeholder_selector + ' .ico-mini-delete',
-    block_collapse_button_selector = '.js-collapse-block',
-    block_collapse_all_button_selector = '.js-collapse-all-blocks',
-    expand_group_button_selector = '.js-expand-group',
     new_content_link_selector = '.new_content_block',
     block_templates = $('.new.block'),
     body = $('body'),
     that = this;
-
-  body.on('click', block_collapse_button_selector, function(e) {
-    e.preventDefault();
-    $(this).closest('.block.row').toggleClass('collapsed');
-  });
-
-  body.on('click', block_collapse_all_button_selector, function(e) {
-    e.preventDefault();
-    $(this).closest('.has-children').find('.block.row').addClass('collapsed');
-  });
-
-  body.on('click', expand_group_button_selector, function(event) {
-    event.preventDefault();
-    $(this).closest('.has-children').toggleClass('collapsed');
-  });
 
   body.on('click', new_content_link_selector, function(e){
     e.preventDefault();
@@ -223,7 +205,6 @@ NoCMS.Admin.BlockHandler = function() {
   $('.block').not('.new').each(function(){
     that.filterBlockLayouts($(this));
     that.saveBlockState(this);
-    $(this).toggleClass('collapsed');
   })
 
 }
