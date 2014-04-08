@@ -79,6 +79,7 @@ NoCMS.Admin.UI = {
     // Collapse block
     this.DOM.$collapse_btn.on('click', function(e) {
       e.preventDefault();
+      console.log('boton');
       $(this).closest('.block.row').toggleClass('collapsed');
       NoCMS.Admin.UI.store_view_settings_in_LS();
     });
@@ -204,9 +205,3 @@ NoCMS.Admin.UI = {
 NoCMS.Admin.UI.page_settings = {
   collapsed: []
 };
-
-$(document).ready(function() {
-
-  NoCMS.Admin.UI.init();
-
-});
