@@ -203,7 +203,7 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     $(this).detach();
   });
 
-  $(block_placeholder + ' .block').not('.new').each(function(){
+  $(block_placeholder_selector + ' .block').not('.new').each(function(){
     that.filterBlockLayouts($(this));
     that.saveBlockState(this);
   })
