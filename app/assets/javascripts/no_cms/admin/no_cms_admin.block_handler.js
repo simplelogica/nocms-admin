@@ -7,12 +7,12 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     block_placeholder_selector = (typeof(block_placeholder_selector) == 'undefined') ? '.content_blocks_placeholder' : block_placeholder_selector
 
   var default_layout_block = $(block_placeholder_selector + ' .block.new').first(),
-    block_layout_select_selector = block_placeholder_selector + ' .block_layout_selector',
-    block_move_up_selector = block_placeholder_selector + ' .ico-mini-move-up',
-    block_move_down_selector = block_placeholder_selector + ' .ico-mini-move-down',
-    block_hide_selector = block_placeholder_selector + ' .ico-mini-show-hide',
-    block_delete_selector = block_placeholder_selector + ' .ico-mini-delete',
-    new_content_link_selector = block_placeholder_selector + ' .new_content_block',
+    block_layout_select_selector = '.block_layout_selector',
+    block_move_up_selector = '.ico-mini-move-up',
+    block_move_down_selector = '.ico-mini-move-down',
+    block_hide_selector = '.ico-mini-show-hide',
+    block_delete_selector = '.ico-mini-delete',
+    new_content_link_selector = '.new_content_block',
     block_templates = $(block_placeholder_selector + ' .new.block'),
     block_placeholder = $(block_placeholder_selector),
     that = this;
