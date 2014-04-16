@@ -4,7 +4,7 @@
 NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
 
 
-    block_placeholder_selector = (typeof(block_placeholder_selector) == 'undefined') ? '.content_blocks_placeholder' : block_placeholder_selector
+    block_placeholder_selector = (typeof(block_placeholder_selector) == 'undefined') ? '.content > .content_blocks_placeholder' : block_placeholder_selector
 
   var default_layout_block = $(block_placeholder_selector + ' .block.new').first(),
     block_layout_select_selector = '.block_layout_selector',
