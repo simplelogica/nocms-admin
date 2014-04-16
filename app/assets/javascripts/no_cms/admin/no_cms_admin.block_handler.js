@@ -1,31 +1,32 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-NoCMS.Admin.BlockHandler = function() {
+NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
 
 
-  var default_layout_block = $('.block.new').first(),
-    block_placeholder_selector = '.content_blocks_placeholder',
+    block_placeholder_selector = (typeof(block_placeholder_selector) == 'undefined') ? '.content_blocks_placeholder' : block_placeholder_selector
+
+  var default_layout_block = $(block_placeholder_selector + ' .block.new').first(),
     block_layout_select_selector = block_placeholder_selector + ' .block_layout_selector',
     block_move_up_selector = block_placeholder_selector + ' .ico-mini-move-up',
     block_move_down_selector = block_placeholder_selector + ' .ico-mini-move-down',
     block_hide_selector = block_placeholder_selector + ' .ico-mini-show-hide',
     block_delete_selector = block_placeholder_selector + ' .ico-mini-delete',
-    new_content_link_selector = '.new_content_block',
-    block_templates = $('.new.block'),
-    body = $('body'),
+    new_content_link_selector = block_placeholder_selector + ' .new_content_block',
+    block_templates = $(block_placeholder_selector + ' .new.block'),
+    block_placeholder = $(block_placeholder_selector),
     that = this;
 
-  body.on('click', new_content_link_selector, function(e){
+  block_placeholder.on('click', new_content_link_selector, function(e){
     e.preventDefault();
     that.createBlock($(this).closest('.content_blocks_placeholder'));
   });
 
-  body.on('change', block_layout_select_selector , function(e){
+  block_placeholder.on('change', block_layout_select_selector , function(e){
     that.updateBlock($(this).closest('.block'), $(this).val());
   });
 
-  body.on('click', block_move_down_selector , function(e){
+  block_placeholder.on('click', block_move_down_selector , function(e){
     e.preventDefault();
     var block = $(this).closest('.block'),
       next_blocks = block.nextAll('.block');
@@ -35,7 +36,7 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  body.on('click', block_move_up_selector, function(e){
+  block_placeholder.on('click', block_move_up_selector, function(e){
     e.preventDefault();
     var block = $(this).closest('.block'),
       previous_blocks = block.prevAll('.block');
@@ -45,12 +46,12 @@ NoCMS.Admin.BlockHandler = function() {
     }
   });
 
-  body.on('click', block_hide_selector, function(e){
+  block_placeholder.on('click', block_hide_selector, function(e){
     e.preventDefault();
     that.toggleDraft($(this).closest('.block'));
   });
 
-  body.on('click', block_delete_selector, function(e){
+  block_placeholder.on('click', block_delete_selector, function(e){
     e.preventDefault();
     that.toggleDestroy($(this).closest('.block'));
   });
@@ -202,7 +203,7 @@ NoCMS.Admin.BlockHandler = function() {
     $(this).detach();
   });
 
-  $('.block').not('.new').each(function(){
+  $(block_placeholder + ' .block').not('.new').each(function(){
     that.filterBlockLayouts($(this));
     that.saveBlockState(this);
   })
