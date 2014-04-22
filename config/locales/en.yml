@@ -1,4 +1,9 @@
 en:
+  layouts:
+    no_cms:
+      admin:
+        application:
+          cms_title: NºCMS
   no_cms:
     admin:
       shared:
