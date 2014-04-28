@@ -206,6 +206,12 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
   $(block_placeholder_selector + ' .block').not('.new').each(function(){
     that.filterBlockLayouts($(this));
     that.saveBlockState(this);
+    // If this block has no selected layout it's because it has an ilegal layout and it will cause troubles saving because a different layout will be send with the fields of the 'ilegal' layout
+    // We need to update the block, so the new layout is loaded
+    if($(this).find('>.row > .block_layout_selector > option[selected]').length == 0) {
+      that.updateBlock($(this), $(this).find('>.row > .block_layout_selector').val());
+    }
+
   })
 
 }
