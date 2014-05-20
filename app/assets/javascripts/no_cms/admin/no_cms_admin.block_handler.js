@@ -105,6 +105,8 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
 
     new_block.removeClass('new');
 
+    new_block.trigger('created_block');
+
   }
 
   this.filterBlockLayouts = function(block) {
