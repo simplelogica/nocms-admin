@@ -5,7 +5,7 @@
     rescue ActionView::MissingTemplate
       ''
   end %>
-  <a href="#" id="js-go-full-screen" class="btn-square ico-expand-dark"></a>
+  <a href="#" data-view="full-screen" class="btn-square ico-expand-dark"></a>
   <%= render 'no_cms/admin/shared/locales' %>
   <%= begin
     render 'toolbar_right', f: f
