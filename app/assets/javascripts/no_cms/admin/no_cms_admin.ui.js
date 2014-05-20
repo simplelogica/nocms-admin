@@ -30,10 +30,6 @@ NoCMS.Admin.UI = {
     this.DOM.$filter_panel = $('.filter-bar');
     this.DOM.$filter_panel_btn = $('#js-filter');
 
-    // Collapsable blocks
-    this.DOM.$collapse_btn = $('.js-collapse-block');
-    this.DOM.$collapse_all_children_btn = $('.js-collapse-all-children-blocks');
-
     // View buttons
     this.DOM.$change_view_btn = $('[data-view]');
     this.DOM.$change_view_btn.on('click', function(e) {
@@ -77,15 +73,14 @@ NoCMS.Admin.UI = {
   collapsable: function () {
 
     // Collapse block
-    this.DOM.$collapse_btn.on('click', function(e) {
+    this.DOM.$body.on('click','.js-collapse-block', function(e) {
       e.preventDefault();
-      console.log('boton');
       $(this).closest('.block.row').toggleClass('collapsed');
       NoCMS.Admin.UI.store_view_settings_in_LS();
     });
 
     // Collapse blocks w children
-    this.DOM.$collapse_all_children_btn.on('click', function(e) {
+    this.DOM.$body.on('click', '.js-collapse-all-children-blocks',function(e) {
       e.preventDefault();
       $(this).closest('.has-children').find('.block.row').addClass('collapsed');
       NoCMS.Admin.UI.store_view_settings_in_LS();
