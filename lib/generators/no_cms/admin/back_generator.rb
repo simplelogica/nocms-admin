@@ -36,6 +36,11 @@ module NoCms
         template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/new.html.erb"
       end
 
+      def generate_helpers
+        template "app/helpers/no_cms/admin/%plugin_name%/%plural_model_name%_helper.rb"
+        template "app/helpers/no_cms/admin/%plugin_name%/application_helper.rb"
+      end
+
       def generate_config
         template "config/routes.rb"
         template "config/locales/%locale%.yml"
