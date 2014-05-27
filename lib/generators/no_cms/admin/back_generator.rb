@@ -44,6 +44,7 @@ module NoCms
       def generate_config
         template "config/routes.rb"
         template "config/locales/%locale%.yml"
+        template "config/initializers/admin_menu_items.rb"
       end
 
       def self.namespace

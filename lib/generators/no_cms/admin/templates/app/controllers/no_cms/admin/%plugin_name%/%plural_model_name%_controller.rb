@@ -51,7 +51,7 @@ module NoCms::Admin::<%= plugin_name.camelize %>
     private
 
     def load_menu_section
-      @current_section = '<%= plugin_name%>'
+      @current_section = '<%= plural_model_name %>'
     end
 
     def load_<%= singular_model_name %>
