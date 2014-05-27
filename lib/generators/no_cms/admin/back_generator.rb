@@ -15,6 +15,10 @@ module NoCms
         model_name.singularize
       end
 
+      def locale
+        I18n.locale
+      end
+
       def generate_controllers
         template "app/controllers/no_cms/admin/%plugin_name%/application_controller.rb"
         template "app/controllers/no_cms/admin/%plugin_name%/%plural_model_name%_controller.rb"
@@ -30,7 +34,11 @@ module NoCms
         template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/edit.html.erb"
         template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/index.html.erb"
         template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/new.html.erb"
+      end
 
+      def generate_config
+        template "config/routes.rb"
+        template "config/locales/%locale%.yml"
       end
 
       def self.namespace
