@@ -1,5 +1,5 @@
 <%% content_for :second_menu do %>
-  <%%= render partial: '<%= singular_model_name %>_listing_item', collection: @roots, as: '<%= singular_model_name %>', layout: '<%= singular_model_name %>_listing' unless @<%= plural_model_name %>.blank? %>
+  <%%= render partial: '<%= singular_model_name %>_listing_item', collection: @<%=plural_model_name%>, as: '<%= singular_model_name %>', layout: '<%= singular_model_name %>_listing' unless @<%= plural_model_name %>.blank? %>
 <%% end %>
 
 

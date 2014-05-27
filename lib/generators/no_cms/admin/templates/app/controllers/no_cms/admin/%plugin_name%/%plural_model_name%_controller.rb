@@ -1,10 +1,10 @@
-require_dependency "no_cms/admin/plugin_name/application_controller"
+require_dependency "no_cms/admin/<%= plugin_name %>/application_controller"
 
 module NoCms::Admin::<%= plugin_name.camelize %>
   class <%= model_name.camelize %>Controller < ApplicationController
 
     before_filter :load_menu_section
-    before_filter :load_page, only: [:edit, :update, :destroy]
+    before_filter :load_<%= singular_model_name %>, only: [:edit, :update, :destroy]
     before_filter :load_sidebar, only: [:index, :new, :edit]
 
 
@@ -15,25 +15,25 @@ module NoCms::Admin::<%= plugin_name.camelize %>
     def create
       @<%= singular_model_name %> = NoCms::<%= plugin_name.camelize %>::<%= singular_model_name.camelize %>.new <%= singular_model_name %>_params
       if @<%= singular_model_name %>.save
-        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.create.success', title: @<%= singular_model_name %>.path), true)
-        redirect_to <%= plural_model_name %>_path
+        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.create.success', title: @<%= singular_model_name %>), true)
+        redirect_to edit_<%= singular_model_name %>_path(@<%= singular_model_name %>)
       else
-        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.create.error', title: @<%= singular_model_name %>.path))
+        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.create.error', title: @<%= singular_model_name %>))
         load_sidebar
         render :new
       end
     end
 
     def edit
-      @nocms_logger.add_message :<%= plugin_name%>, I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.edit.log_messages', title: @<%= singular_model_name %>.path)
+      @nocms_logger.add_message :<%= plugin_name%>, I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.edit.log_messages', title: @<%= singular_model_name %>)
     end
 
     def update
       if @<%= singular_model_name %>.update_attributes <%= singular_model_name %>_params
-        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.update.success', title: @<%= singular_model_name %>.path), true)
-        redirect_after_save
+        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.update.success', title: @<%= singular_model_name %>), true)
+        redirect_to edit_<%= singular_model_name %>_path(@<%= singular_model_name %>)
       else
-        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.update.error', title: @<%= singular_model_name %>.path))
+        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.update.error', title: @<%= singular_model_name %>))
         load_sidebar
         render :edit
       end
@@ -41,9 +41,9 @@ module NoCms::Admin::<%= plugin_name.camelize %>
 
     def destroy
       if @<%= singular_model_name %>.destroy
-        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.destroy.success', title: @<%= singular_model_name %>.path), true)
+        @nocms_logger.info(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.destroy.success', title: @<%= singular_model_name %>), true)
       else
-        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.destroy.error', title: @<%= singular_model_name %>.path), true)
+        @nocms_logger.error(I18n.t('.no_cms.admin.<%= plugin_name %>.<%= plural_model_name %>.destroy.error', title: @<%= singular_model_name %>), true)
       end
       redirect_to <%= plural_model_name %>_path
     end
@@ -59,7 +59,7 @@ module NoCms::Admin::<%= plugin_name.camelize %>
     end
 
     def load_sidebar
-      @<%= plural_model_name %> = NoCms::<%= plugin_name.camelize %>::<%= singular_model_name.camelize %>.scoped
+      @<%= plural_model_name %> = NoCms::<%= plugin_name.camelize %>::<%= singular_model_name.camelize %>.all
     end
 
     def <%= singular_model_name %>_params

@@ -19,7 +19,7 @@
             submit: 'Send'
           templates:
             show: Default
-          page_listing_item:
+          <%= singular_model_name %>_listing_item:
             destroy: Remove
             show: Show <%= singular_model_name.humanize.titleize %>
             hide: Mark <%= singular_model_name.humanize %> as draft

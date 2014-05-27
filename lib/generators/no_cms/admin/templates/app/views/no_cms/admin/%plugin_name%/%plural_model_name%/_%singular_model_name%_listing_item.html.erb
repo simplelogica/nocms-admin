@@ -1,5 +1,5 @@
 <%% current ||= nil %>
-<li <%%= raw "class='#{page_listing_item_classes(page, current).join(' ')}'"%>>
+<li <%%= raw "class='#{<%= singular_model_name %>_listing_item_classes(<%= singular_model_name %>, current).join(' ')}'"%>>
   <%%= link_to <%= singular_model_name %>.title, edit_<%= singular_model_name %>_path(<%= singular_model_name %>)%>
   <div class="mo">
     <%%= button_to '', <%= singular_model_name %>_path(<%= singular_model_name %>), method: :delete, class: "ico-mini-delete", title: t('.destroy') %>
@@ -9,5 +9,4 @@
       <%% end %>
     <%% end %>
   </div>
-  <%%= render partial: '<%= singular_model_name %>_listing_item', collection: <%= singular_model_name %>.children, as: '<%= singular_model_name %>', layout: '<%= singular_model_name %>_listing', locals: { current: current } unless <%= singular_model_name %>.children.blank? %>
 </li>
