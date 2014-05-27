@@ -813,7 +813,7 @@ $pagenav_text_color: $bg_l30;
       line-height: 40px;
 
       border-radius: 0;
-      background: $bg_d10 asset_url('nocms/admin/ico-prev.svg') center center no-repeat;
+      background: $bg_d10 asset_url('no_cms/admin/ico-prev.svg') center center no-repeat;
 
       &:hover {
         background-color: $a_accent;
@@ -821,7 +821,7 @@ $pagenav_text_color: $bg_l30;
       }
     }
     .next {
-      background: $bg_d10 asset_url('nocms/admin/ico-next.svg') center center no-repeat;
+      background: $bg_d10 asset_url('no_cms/admin/ico-next.svg') center center no-repeat;
       border-right: 0;
       border-left: 1px solid $bg;
       left: auto;
