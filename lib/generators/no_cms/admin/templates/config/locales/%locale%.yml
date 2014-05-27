@@ -1,0 +1,31 @@
+<%= locale %>:
+  no_cms:
+    admin:
+      menu_items:
+        <%= plural_model_name %>: <%= plural_model_name.humanize %>
+      <%= plugin_name %>:
+        <%= plural_model_name %>:
+          content_fields:
+          create:
+            success: "<%= singular_model_name.humanize.titleize %> %{title} has been created"
+            error: "Some error was found and <%= singular_model_name.humanize %> %{title} couldn't be created"
+          destroy:
+            success: "<%= singular_model_name.humanize.titleize %> %{title} has been deleted"
+            error: "Some error was found and <%= singular_model_name.humanize %> %{title} couldn't be deleted"
+          edit:
+            log_messages: "<%= singular_model_name.humanize.titleize %> %{title} loaded for editing"
+            submit: 'Send'
+          new:
+            submit: 'Send'
+          templates:
+            show: Default
+          <%= singular_model_name %>_listing_item:
+            destroy: Remove
+            show: Show <%= singular_model_name.humanize.titleize %>
+            hide: Mark <%= singular_model_name.humanize %> as draft
+          toolbar_right:
+            submit: Save
+            visit: Visit
+          update:
+            success: "<%= singular_model_name.humanize.titleize %> %{title} has been updated"
+            error: "Some error was found and <%= singular_model_name.humanize %> %{title} couldn't be updated"
