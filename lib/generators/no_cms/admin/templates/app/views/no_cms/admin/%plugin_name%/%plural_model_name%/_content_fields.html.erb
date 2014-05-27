@@ -3,6 +3,12 @@
     <%%= f.label :title %>
     <%%= f.text_field :title %>
   </div>
+
+  <div class="row">
+    <%%= f.label_with_tooltip :slug, { tooltip: t('.slug_tooltip', base: no_cms_<%= plugin_name %>.<%= plural_model_name %>_path)} %>
+    <%%= f.text_field :slug %>
+  </div>
+
   <div class="row">
     <%%= f.label :body %>
     <%%= f.text_area :body %>

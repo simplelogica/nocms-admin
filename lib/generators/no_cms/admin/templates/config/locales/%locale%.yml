@@ -6,6 +6,7 @@
       <%= plugin_name %>:
         <%= plural_model_name %>:
           content_fields:
+            slug_tooltip: "This field will be appended to %{base} to build the url for this <%= singular_model_name %>"
           create:
             success: "<%= singular_model_name.humanize.titleize %> %{title} has been created"
             error: "Some error was found and <%= singular_model_name.humanize %> %{title} couldn't be created"
