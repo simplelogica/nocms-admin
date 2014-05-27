@@ -1,0 +1,3 @@
+<%%= f.submit t('.submit'), name: :submit, class: "btn right" %>
+<%% # We must check that routes are mounted. Otherwise it will get a 404 error %>
+<%%= link_to t('.visit'), no_cms_<%=plugin_name %>.url_for(<%= singular_model_name %>), target: '_blank', class: "preview btn right" if defined?(no_cms_<%=plugin_name %>) && !@<%= singular_model_name %>.new_record?  %>

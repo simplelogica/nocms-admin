@@ -16,8 +16,21 @@ module NoCms
       end
 
       def generate_controllers
-        template "application/controllers/no_cms/admin/%plugin_name%/application_controller.rb"
-        template "application/controllers/no_cms/admin/%plugin_name%/%plural_model_name%_controller.rb"
+        template "app/controllers/no_cms/admin/%plugin_name%/application_controller.rb"
+        template "app/controllers/no_cms/admin/%plugin_name%/%plural_model_name%_controller.rb"
+      end
+
+      def generate_views
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_%singular_model_name%_listing.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_%singular_model_name%_listing_item.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_content_fields.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_filter.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_search.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/_toolbar_right.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/edit.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/index.html.erb"
+        template "app/views/no_cms/admin/%plugin_name%/%plural_model_name%/new.html.erb"
+
       end
 
       def self.namespace

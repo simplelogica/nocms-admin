@@ -1,0 +1,12 @@
+<%% content_for :second_menu do %>
+  <%%= render partial: '<%= singular_model_name %>_listing_item', collection: @roots, as: '<%= singular_model_name %>', layout: '<%= singular_model_name %>_listing', locals: { current: @<%= singular_model_name %> } unless @<%= plural_model_name %>.blank? %>
+<%% end %>
+
+
+<%%= no_cms_admin_form_for @<%= singular_model_name %> do |f| %>
+  <%%= render partial: 'no_cms/admin/shared/toolbar', locals: { f: f } %>
+  <div class="content">
+    <%%= render 'no_cms/admin/shared/log_messages' %>
+    <%%= render 'content_fields', f: f %>
+  </div>
+<%% end %>
