@@ -45,4 +45,19 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
       block.call(f_translation)
     end
   end
+
+  def datetime_picker field, options = {}
+
+    options.merge datetime: Time.now.strftime('%Y-%m-%d %H:%M:%S')
+
+    attrs = Hash[options.map { |k, v| ["data-#{k}", v]  }]
+    attrs[:class] = "input-group ui-datetimepicker date"
+
+    @template.content_tag('div', attrs) do
+      text_field(:published_at, class: "half") +
+      @template.content_tag(:span, class: "input-group-addon") do
+        @template.content_tag :i, '', class: "icon-th glyphicon glyphicon-calendar"
+      end
+    end
+  end
 end
