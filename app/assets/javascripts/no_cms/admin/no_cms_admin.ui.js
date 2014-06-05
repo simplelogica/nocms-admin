@@ -45,6 +45,7 @@ NoCMS.Admin.UI = {
     this.mark_parents_in_listings();
     this.search_panel();
     this.filter_panel();
+    this.show_datetimepickers();
     this.retrieve_view_settings_from_LS();
 
   },
@@ -191,6 +192,10 @@ NoCMS.Admin.UI = {
         $('#js-clear-log').remove();
       }
     });
+  },
+
+  show_datetimepickers: function() {
+    $('.ui-datetimepicker').datetimepicker({format: 'yyyy-mm-dd hh:ii'});
   }
 };
 
