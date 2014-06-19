@@ -54,7 +54,7 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
     attrs[:class] = "input-group ui-datetimepicker date"
 
     @template.content_tag('div', attrs) do
-      text_field(:published_at, class: "half") +
+      text_field(field, class: "half") +
       @template.content_tag(:span, class: "input-group-addon") do
         @template.content_tag :i, '', class: "icon-th glyphicon glyphicon-calendar"
       end
