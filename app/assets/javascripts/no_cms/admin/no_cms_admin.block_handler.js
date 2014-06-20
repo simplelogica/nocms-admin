@@ -71,6 +71,9 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     this.modifyInputNames(block.find('.layout_fields'), old_name, name, position);
 
     this.restoreBlockState(block);
+
+    block.trigger('updated_block');
+
   }
 
   this.switchBlockPositions = function(block, next_block){
