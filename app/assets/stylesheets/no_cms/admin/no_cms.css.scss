@@ -1601,6 +1601,9 @@ section#content-area {
         &.ico-mini-delete {
           background-image: asset_url('no_cms/admin/ico-mini-delete.png');
         }
+        &.ico-mini-highlight {
+          background-image: asset_url('no_cms/admin/ico-mini-highlight.png');
+        }
       }
 
       &.ico-mini-show-hide {
@@ -1614,6 +1617,9 @@ section#content-area {
       }
       &.ico-mini-delete {
         background-image: asset_url('no_cms/admin/ico-mini-delete-dark.png');
+      }
+      &.ico-mini-highlight {
+        background-image: asset_url('no_cms/admin/ico-mini-highlight-dark.png');
       }
     }
   }
