@@ -1228,6 +1228,13 @@ section#content-area {
           }
         }
 
+        &.highlighted {
+          .ico-mini-highlight {
+            background-color: $bg_l10;
+            background-image: asset_url('no_cms/admin/ico-mini-highlight.png');
+          }
+        }
+
         .b-title {
           width: 100%;
           min-height: 44px;
