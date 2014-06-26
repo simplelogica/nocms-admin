@@ -34,7 +34,12 @@ NoCMS.Admin.Map = {
 
     var that = this;
 
-    var center = new google.maps.LatLng("40.4191486", "-3.7031865");
+    var lat = $(address_map).siblings('.latitude').val();
+    lat = (lat == '') ? "40.4191486" : lat
+    var lng = $(address_map).siblings('.longitude').val();
+    lng = (lng == '') ? "-3.7031865" : lng
+
+    var center = new google.maps.LatLng(lat, lng);
 
     var map = new google.maps.Map(address_map, {
       center: center,
