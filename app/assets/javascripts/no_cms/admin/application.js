@@ -18,5 +18,6 @@
 //= require ./no_cms_admin.block_handler
 //= require ./no_cms_admin.ui
 //= require ./no_cms_admin.logger
+//= require ./no_cms_admin.map
 //= require ./ready
 
