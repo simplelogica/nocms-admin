@@ -32,6 +32,8 @@ NoCMS.Admin.Map = {
 
   loadMap: function(address_map) {
 
+    var that = this;
+
     var center = new google.maps.LatLng("40.4191486", "-3.7031865");
 
     var map = new google.maps.Map(address_map, {
@@ -47,13 +49,43 @@ NoCMS.Admin.Map = {
       map: map
     });
 
-    google.maps.event.addListener(marker, "dragend", this.saveCoords);
+    google.maps.event.addListener(marker, "dragend", function(){
+      that.saveCoords(map, this.getPosition());
+    });
+
+    var geocoder = new google.maps.Geocoder();
+
+    $(address_map).siblings('.search.btn').click(function(e){
+      e.preventDefault();
+      that.searchCoords($(this).siblings('.address').val(), map, marker);
+    });
 
   },
-  saveCoords: function(e) {
-    $(this.getMap().getDiv()).siblings('.latitude').val(this.getPosition().lat());
-    $(this.getMap().getDiv()).siblings('.longitude').val(this.getPosition().lng());
+
+  saveCoords: function(map, position) {
+    $(map.getDiv()).siblings('.latitude').val(position.lat());
+    $(map.getDiv()).siblings('.longitude').val(position.lng());
+  },
+
+  searchCoords: function(address, map, marker) {
+    var geocoder = new google.maps.Geocoder();
+    var that = this;
+
+    geocoder.geocode({'address': address }, function(results) {
+    if (results.length > 0) {
+      point = results[0];
+
+      that.saveCoords(map, point.geometry.location);
+      map.setCenter(point.geometry.location);
+      map.setZoom(15);
+      marker.setPosition(point.geometry.location);
+    }
+    else
+    {
+      $(map.getDiv()).
+      $("#map_log")[0].innerHTML = "<div class='flashmsg error'>No se ha podido localizar la tienda. Por favor, cambie los datos para volver a intentarlo</div>"
+      window.setTimeout("$('#map_log')[0].innerHTML = ''", 5000)
+    }
+    });
   }
-
-
 };

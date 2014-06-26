@@ -65,9 +65,12 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
 
 
     address_options = (options[:address] || {}).reverse_merge(field: :address, class: '', fake: false)
-    address_options[:class] += ' address'
+    address_options[:class] += ' address half'
     address_field = address_options.delete(:field)
     fake_address_field = address_options.delete(:fake)
+
+    search_options = (options[:search] || {}).reverse_merge(class: '')
+    search_options[:class] += ' search btn'
 
     latitude_options = (options[:latitude] || {}).reverse_merge(field: :latitude, class: '')
     latitude_options[:class] += ' latitude'
@@ -85,6 +88,7 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
       (fake_address_field ?
         @template.text_field_tag(address_field, '', address_options).to_s :
         text_field(address_field, address_options)) +
+      @template.button_tag(:search, search_options) +
       @template.content_tag(:div, "Map", map_options) +
       hidden_field(latitude_field, latitude_options ) +
       hidden_field(longitude_field, longitude_options)
