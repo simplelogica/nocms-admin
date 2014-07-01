@@ -1,0 +1,16 @@
+es:
+  layouts:
+    no_cms:
+      admin:
+        application:
+          cms_title: NºCMS
+  no_cms:
+    admin:
+      shared:
+        console_log:
+          clear: Limpiar
+          clear_title: Limpiar Log
+        secondary_menu_toolbar:
+          filter: Filtro
+          new: Nuevo
+          search: Buscar
