@@ -76,7 +76,9 @@ NoCMS.Admin.UI = {
     // Collapse block
     this.DOM.$body.on('click','.js-collapse-block', function(e) {
       e.preventDefault();
-      $(this).closest('.block.row').toggleClass('collapsed');
+      var row = $(this).closest('.block.row');
+      row.toggleClass('collapsed');
+      row.trigger(row.hasClass('collapsed') ? 'no_cms:blocks:collapse' : 'no_cms:blocks:expand')
       NoCMS.Admin.UI.store_view_settings_in_LS();
     });
 
@@ -164,6 +166,8 @@ NoCMS.Admin.UI = {
           return document.getElementById(i);
         });
       $(nodes).addClass('collapsed');
+      $(nodes).find('.block').addClass('collapsed');
+      $('.block.row').not('.collapsed').trigger('no_cms:blocks:expand')
     }
   },
 
