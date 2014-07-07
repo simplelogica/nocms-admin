@@ -22,7 +22,7 @@
 
 <% second_menu = yield :second_menu %>
 
-<body <%= raw 'class="col-1-only"' if second_menu.blank? %>>
+<body>
 
 <section id="content-area">
   <%= yield %>
@@ -47,7 +47,6 @@
     </div>
   </aside>
 
-<% unless second_menu.blank? %>
   <aside id="col-2">
     <%= render 'no_cms/admin/shared/secondary_menu_toolbar' %>
     <% pagination = yield :pagination %>
@@ -62,7 +61,6 @@
       <%= second_menu %>
     </div>
   </aside>
-  <% end %>
 </section>
 
 
