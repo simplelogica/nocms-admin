@@ -25,4 +25,7 @@ $(document).ready(function() {
   //
   NoCMS.Admin.UI.init();
 
+  // Select2 selector
+  $('.select2').select2();
+
 });
