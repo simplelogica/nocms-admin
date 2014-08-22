@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require ./libraries/store.min
 //= require ./libraries/bootstrap-datetimepicker.min
+//= require ./libraries/select2.min
 //= require ./no_cms_admin
 //= require ./no_cms_admin.block_handler
 //= require ./no_cms_admin.ui
