@@ -72,6 +72,8 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
 
     this.restoreBlockState(block);
 
+    this.activeCustomInputs(block);
+
     block.trigger('updated_block');
 
   }
@@ -105,6 +107,8 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     placeholder.append(new_block);
 
     this.filterBlockLayouts(new_block);
+
+    this.activeCustomInputs(new_block);
 
     new_block.removeClass('new');
 
@@ -195,13 +199,22 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
       state = JSON.parse(state);
     }
 
-    $(block).find('textarea, input[type="text"], select').each(function(){
+    $(block).find('textarea, input[type="text"], select').not('.select2-offscreen, .select2-input').each(function(){
       field_name = field_name_regexp.exec(this.name)[1];
       if((typeof(state[field_name]) != 'undefined') && (state[field_name] != '')){
         $(this).val(state[field_name]);
       }
     });
 
+  }
+
+  this.activeCustomInputs = function(block) {
+    block.find('.select2').select2({
+      width: 'resolve'
+    });
+    if (block.find('.ckeditor').length > 0) {
+      CKEDITOR.replace('.ckeditor');
+    }
   }
 
   block_templates.each(function() {
