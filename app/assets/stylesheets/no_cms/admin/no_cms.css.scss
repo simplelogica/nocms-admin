@@ -1197,7 +1197,9 @@ section#content-area {
         .row {
           background-color: transparent;
         }
-
+        &.new {
+          display: none;
+        }
         &.collapsed {
           height: $tool_bar_h;
           a.ico-collapse-v {
@@ -1793,4 +1795,12 @@ select {
   clear: both;
   height: 400px;
   width:100%;
+}
+
+
+//
+// CKEditor Fix
+//
+.cke_reset {
+  clear: left;
 }

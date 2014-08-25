@@ -30,4 +30,8 @@ $(document).ready(function() {
     width: 'resolve'
   });
 
+  // CKEditor
+  if ($('.ckeditor:visible').length > 0) {
+    CKEDITOR.replace('.ckeditor');
+  }
 });
