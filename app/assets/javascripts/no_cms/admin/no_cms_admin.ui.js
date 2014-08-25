@@ -191,7 +191,7 @@ NoCMS.Admin.UI = {
     this.DOM.$clear_log_button.on('click', function(e) {
       var $el = $(this);
       e.stopPropagation();
-
+      store.set('no_cms_admin_logger_messages', []);
       $el.hide();
       NoCMS.Admin.UI.DOM.$log_bar.toggleClass('expanded').html($el);
     })
