@@ -1,4 +1,5 @@
 require 'jquery-rails'
+require 'ckeditor'
 
 module NoCms
   module Admin
