@@ -212,8 +212,11 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     block.find('.select2').select2({
       width: 'resolve'
     });
-    if (block.find('.ckeditor').length > 0) {
-      CKEDITOR.replace('.ckeditor');
+    var ckeditor_text_areas = block.find('.ckeditor');
+    if (ckeditor_text_areas.length > 0) {
+      ckeditor_text_areas.each(function() {
+        CKEDITOR.replace($(this).attr('name'));
+      });
     }
   }
 

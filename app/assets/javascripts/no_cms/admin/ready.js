@@ -31,7 +31,10 @@ $(document).ready(function() {
   });
 
   // CKEditor
-  if ($('.ckeditor:visible').length > 0) {
-    CKEDITOR.replace('.ckeditor');
+  var ckeditor_text_areas = $('.ckeditor:visible');
+  if (ckeditor_text_areas.length > 0) {
+    ckeditor_text_areas.each(function() {
+      CKEDITOR.replace($(this).attr('name'));
+    });
   }
 });
