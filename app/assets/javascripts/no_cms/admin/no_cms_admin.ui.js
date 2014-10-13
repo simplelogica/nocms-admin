@@ -19,6 +19,7 @@ NoCMS.Admin.UI = {
     // Cahed DOM elements that we use in this object
     this.DOM.$body = $('body');
     this.DOM.$log_bar = $('#log-bar');
+    this.DOM.$clear_log_button = $('#js-clear-log');
     this.DOM.$aside_col_1 = $('aside#col-1');
     this.DOM.$aside_col_2 = $('aside#col-2');
 
@@ -176,26 +177,24 @@ NoCMS.Admin.UI = {
   //
   log_bar_init: function () {
 
-    this.DOM.$log_bar.on('click', function(e) {
-      e.preventDefault();
-      $this = $(this);
-      $this.toggleClass('expanded');
+    this.DOM.$log_bar.on('click', function() {
+      var $el = $(this);
+      $el.toggleClass('expanded');
 
-      if ($this.hasClass('expanded')) {
-        var
-          clear_log_button = $('<span id="js-clear-log" title="clear log">Clear</span>');
-
-        clear_log_button.on('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $(this).parent().removeClass('expanded').html('');
-          $(this).remove();
-        }).appendTo(NoCMS.Admin.UI.DOM.$log_bar);
-
+      if ($el.hasClass('expanded')) {
+        NoCMS.Admin.UI.DOM.$clear_log_button.show();
       } else {
-        $('#js-clear-log').remove();
+        NoCMS.Admin.UI.DOM.$clear_log_button.hide();
       }
     });
+
+    this.DOM.$clear_log_button.on('click', function(e) {
+      var $el = $(this);
+      e.stopPropagation();
+      store.set('no_cms_admin_logger_messages', []);
+      $el.hide();
+      NoCMS.Admin.UI.DOM.$log_bar.toggleClass('expanded').html($el);
+    })
   },
 
   show_datetimepickers: function() {

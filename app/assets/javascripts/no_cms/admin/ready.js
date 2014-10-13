@@ -25,4 +25,16 @@ $(document).ready(function() {
   //
   NoCMS.Admin.UI.init();
 
+  // Select2 selector
+  $('.select2:visible').select2({
+    width: 'resolve'
+  });
+
+  // CKEditor
+  var ckeditor_text_areas = $('.ckeditor:visible');
+  if (ckeditor_text_areas.length > 0) {
+    ckeditor_text_areas.each(function() {
+      CKEDITOR.replace($(this).attr('name'));
+    });
+  }
 });

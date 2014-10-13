@@ -507,43 +507,43 @@ a.btn-square {
   }
 
   &.ico-close {
-    background-image: asset_url('no_cms/admin/ico-close.svg');
+    background-image: image-url('no_cms/admin/ico-close.svg');
   }
 
   &.ico-expand {
-    background-image: asset_url('no_cms/admin/ico-expand.svg');
+    background-image: image-url('no_cms/admin/ico-expand.svg');
   }
 
   &.ico-expand-v {
-    background-image: asset_url('no_cms/admin/ico-expand-v.svg');
+    background-image: image-url('no_cms/admin/ico-expand-v.svg');
   }
 
   &.ico-expand-dark {
-    background-image: asset_url('no_cms/admin/ico-expand-dark.svg');
+    background-image: image-url('no_cms/admin/ico-expand-dark.svg');
   }
 
   &.ico-expand-dark-v {
-    background-image: asset_url('no_cms/admin/ico-expand-dark-v.svg');
+    background-image: image-url('no_cms/admin/ico-expand-dark-v.svg');
   }
 
   &.ico-collapse-v {
-    background-image: asset_url('no_cms/admin/ico-collapse-v.svg');
+    background-image: image-url('no_cms/admin/ico-collapse-v.svg');
   }
 
   &.ico-collapse-dark-v {
-    background-image: asset_url('no_cms/admin/ico-collapse-dark-v.svg');
+    background-image: image-url('no_cms/admin/ico-collapse-dark-v.svg');
   }
 
   &.ico-add {
-    background-image: asset_url('no_cms/admin/ico-add.svg');
+    background-image: image-url('no_cms/admin/ico-add.svg');
   }
 
   &.ico-filter {
-    background-image: asset_url('no_cms/admin/ico-filter.svg');
+    background-image: image-url('no_cms/admin/ico-filter.svg');
   }
 
   &.ico-search {
-    background-image: asset_url('no_cms/admin/ico-search.svg');
+    background-image: image-url('no_cms/admin/ico-search.svg');
   }
 }
 
@@ -689,13 +689,13 @@ body {
   }
 
   > span#js-clear-log {
-    display: block;
+    display: none;
     height: 24px;
     padding: 4px 22px 0 0;
     position: absolute;
     right: 0;
     top: 0;
-    background: asset_url('no_cms/admin/ico-mini-delete.png') right center no-repeat;
+    background: image-url('no_cms/admin/ico-mini-delete.png') right center no-repeat;
 
     font-weight: 400;
     color: #fff;
@@ -813,7 +813,7 @@ $pagenav_text_color: $bg_l30;
       line-height: 40px;
 
       border-radius: 0;
-      background: $bg_d10 asset_url('no_cms/admin/ico-prev.svg') center center no-repeat;
+      background: $bg_d10 image-url('no_cms/admin/ico-prev.svg') center center no-repeat;
 
       &:hover {
         background-color: $a_accent;
@@ -821,7 +821,7 @@ $pagenav_text_color: $bg_l30;
       }
     }
     .next {
-      background: $bg_d10 asset_url('no_cms/admin/ico-next.svg') center center no-repeat;
+      background: $bg_d10 image-url('no_cms/admin/ico-next.svg') center center no-repeat;
       border-right: 0;
       border-left: 1px solid $bg;
       left: auto;
@@ -1008,7 +1008,7 @@ aside#col-2 {
       }
       &.oculto {
         > a {
-          background: asset_url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_b15.png') 0 0 repeat;
+          background: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_b15.png') 0 0 repeat;
         }
         > div.mo {
           > .ico-mini-show-hide {
@@ -1115,7 +1115,7 @@ aside#col-2 {
     width: 33px;
     height: 33px;
     margin: 0;
-    background: $a_des20_dar20 asset_url('no_cms/admin/ico-search-mini.png') center center no-repeat;
+    background: $a_des20_dar20 image-url('no_cms/admin/ico-search-mini.png') center center no-repeat;
   }
 }
 
@@ -1150,10 +1150,10 @@ section#content-area {
           height: $tool_bar_h; // + 1?
           .tool-bar-blocks {
             a.ico-expand-v {
-              background-image: asset_url('no_cms/admin/ico-collapse-v.svg');
+              background-image: image-url('no_cms/admin/ico-collapse-v.svg');
             }
             a.ico-collapse-v {
-              background-image: asset_url('no_cms/admin/ico-expand-v.svg');
+              background-image: image-url('no_cms/admin/ico-expand-v.svg');
             }
           }
         }
@@ -1197,11 +1197,13 @@ section#content-area {
         .row {
           background-color: transparent;
         }
-
+        &.new {
+          display: none;
+        }
         &.collapsed {
           height: $tool_bar_h;
           a.ico-collapse-v {
-            background-image: asset_url('no_cms/admin/ico-expand-v.svg');
+            background-image: image-url('no_cms/admin/ico-expand-v.svg');
           }
         }
 
@@ -1216,13 +1218,13 @@ section#content-area {
         }
 
         &.oculto {
-          background-image: asset_url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
+          background-image: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
           .b-title {
-            background-image: asset_url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
+            background-image: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
             .mo {
               .ico-mini-show-hide {
                 background-color: $bg_l10;
-                background-image: asset_url('no_cms/admin/ico-mini-show-hide.png');
+                background-image: image-url('no_cms/admin/ico-mini-show-hide.png');
               }
             }
           }
@@ -1231,7 +1233,7 @@ section#content-area {
         &.highlighted {
           .ico-mini-highlight {
             background-color: $bg_l10;
-            background-image: asset_url('no_cms/admin/ico-mini-highlight.png');
+            background-image: image-url('no_cms/admin/ico-mini-highlight.png');
           }
         }
 
@@ -1254,7 +1256,7 @@ section#content-area {
             float: left;
           }
           > select {
-            margin: 8px 0 0 8px;
+            margin: 12px 0 0 8px;
 
           }
         }
@@ -1281,12 +1283,12 @@ section#content-area {
         margin-right: 0;
       }
       &.ico-prev {
-        background-image: asset_url('no_cms/admin/ico-prev-dark.svg');
+        background-image: image-url('no_cms/admin/ico-prev-dark.svg');
         background-position: center center;
         background-repeat: no-repeat;
       }
       &.ico-next {
-        background-image: asset_url('no_cms/admin/ico-next-dark.svg');
+        background-image: image-url('no_cms/admin/ico-next-dark.svg');
         background-position: center center;
         background-repeat: no-repeat;
       }
@@ -1558,16 +1560,16 @@ section#content-area {
       background-color: desaturate(darken($a_accent, 20%), 20%);
     }
     &.ico-mini-show-hide {
-      background-image: asset_url('no_cms/admin/ico-mini-show-hide.png');
+      background-image: image-url('no_cms/admin/ico-mini-show-hide.png');
     }
     &.ico-mini-move-up {
-      background-image: asset_url('no_cms/admin/ico-mini-move-up.png');
+      background-image: image-url('no_cms/admin/ico-mini-move-up.png');
     }
     &.ico-mini-move-down {
-      background-image: asset_url('no_cms/admin/ico-mini-move-down.png');
+      background-image: image-url('no_cms/admin/ico-mini-move-down.png');
     }
     &.ico-mini-delete {
-      background-image: asset_url('no_cms/admin/ico-mini-delete.png');
+      background-image: image-url('no_cms/admin/ico-mini-delete.png');
     }
   }
 }
@@ -1597,36 +1599,36 @@ section#content-area {
         background-color: $bg_l10;
 
         &.ico-mini-show-hide {
-          background-image: asset_url('no_cms/admin/ico-mini-show-hide.png');
+          background-image: image-url('no_cms/admin/ico-mini-show-hide.png');
         }
         &.ico-mini-move-up {
-          background-image: asset_url('no_cms/admin/ico-mini-move-up.png');
+          background-image: image-url('no_cms/admin/ico-mini-move-up.png');
         }
         &.ico-mini-move-down {
-          background-image: asset_url('no_cms/admin/ico-mini-move-down.png');
+          background-image: image-url('no_cms/admin/ico-mini-move-down.png');
         }
         &.ico-mini-delete {
-          background-image: asset_url('no_cms/admin/ico-mini-delete.png');
+          background-image: image-url('no_cms/admin/ico-mini-delete.png');
         }
         &.ico-mini-highlight {
-          background-image: asset_url('no_cms/admin/ico-mini-highlight.png');
+          background-image: image-url('no_cms/admin/ico-mini-highlight.png');
         }
       }
 
       &.ico-mini-show-hide {
-        background-image: asset_url('no_cms/admin/ico-mini-show-hide-dark.png');
+        background-image: image-url('no_cms/admin/ico-mini-show-hide-dark.png');
       }
       &.ico-mini-move-up {
-        background-image: asset_url('no_cms/admin/ico-mini-move-up-dark.png');
+        background-image: image-url('no_cms/admin/ico-mini-move-up-dark.png');
       }
       &.ico-mini-move-down {
-        background-image: asset_url('no_cms/admin/ico-mini-move-down-dark.png');
+        background-image: image-url('no_cms/admin/ico-mini-move-down-dark.png');
       }
       &.ico-mini-delete {
-        background-image: asset_url('no_cms/admin/ico-mini-delete-dark.png');
+        background-image: image-url('no_cms/admin/ico-mini-delete-dark.png');
       }
       &.ico-mini-highlight {
-        background-image: asset_url('no_cms/admin/ico-mini-highlight-dark.png');
+        background-image: image-url('no_cms/admin/ico-mini-highlight-dark.png');
       }
     }
   }
@@ -1793,4 +1795,12 @@ select {
   clear: both;
   height: 400px;
   width:100%;
+}
+
+
+//
+// CKEditor Fix
+//
+.cke_reset {
+  clear: left;
 }
