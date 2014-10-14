@@ -209,8 +209,8 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
   }
 
   this.activeCustomInputs = function(block) {
-    block.find('.select2').select2({
-      width: 'resolve'
+    block.find('select.select2').select2({
+      width: '100%'
     });
     var ckeditor_text_areas = block.find('.ckeditor');
     if (ckeditor_text_areas.length > 0) {
