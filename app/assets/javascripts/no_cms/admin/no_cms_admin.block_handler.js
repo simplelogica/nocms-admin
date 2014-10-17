@@ -81,8 +81,8 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
   this.switchBlockPositions = function(block, next_block){
     next_block.after(block);
 
-    next_block.find('.position').val(next_block.prevAll('.block').length);
-    block.find('.position').val(block.prevAll('.block').length);
+    next_block.find('> .position').val(next_block.prevAll('.block').length + 1);
+    block.find('> .position').val(block.prevAll('.block').length + 1);
 
   }
 
