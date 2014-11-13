@@ -112,6 +112,9 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
 
     new_block.removeClass('new');
 
+    // Block templates may have the destroy field filled and we must unmark them as destroyable
+    new_block.find('.destroy').val('0');
+
     new_block.trigger('created_block');
 
   }
