@@ -1147,9 +1147,11 @@ section#content-area {
         border-bottom: 0;
         padding: 0;
         overflow: hidden;
+        background: #FFF;
         &.collapsed {
           height: $tool_bar_h; // + 1?
           .tool-bar-blocks {
+            background: #FFF;
             a.ico-expand-v {
               background-image: image-url('no_cms/admin/ico-collapse-v.svg');
             }
@@ -1161,6 +1163,7 @@ section#content-area {
         // Niveles anidados INCEPTION!!!"
         .block.row {
           .layout_fields {
+            background: #FFF;
             > .row {
               border-left: 4px solid $a_des20_dar20;
               border-right: 1px solid $bg_l70;
@@ -1220,7 +1223,7 @@ section#content-area {
 
         &.oculto {
           background-image: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
-          .b-title {
+          > .b-title {
             background-image: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png');
             .mo {
               .ico-mini-show-hide {
@@ -1228,6 +1231,9 @@ section#content-area {
                 background-image: image-url('no_cms/admin/ico-mini-show-hide.png');
               }
             }
+          }
+          > .layout_fields {
+            background-image: image-url('no_cms/admin/stripe_5d3ba7190e7de9a95d82d43dce2917b1_a10.png') !important;
           }
         }
 

@@ -161,7 +161,7 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
   }
 
   this.toggleDraft = function(block) {
-    var draft_field = block.find('.draft');
+    var draft_field = block.find('> .draft');
     block.toggleClass('oculto');
     draft_field.val(draft_field.val() == '1' ? '0' : '1');
   }
