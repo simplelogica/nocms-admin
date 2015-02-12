@@ -48,13 +48,18 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
 
   def datetime_picker field, options = {}
 
-    options.merge datetime: Time.now.strftime('%Y-%m-%d %H:%M:%S')
+    options.merge! 'date-format' => "yyyy-mm-dd hh:ii",
+      "date-autoclose" => true,
+      "minute-step" => "15",
+      "rails-date-format" => '%Y-%m-%d %H:%M'
+
+    rails_date_format = options.delete "rails-date-format"
 
     attrs = Hash[options.map { |k, v| ["data-#{k}", v]  }]
     attrs[:class] = "input-group ui-datetimepicker date"
 
     @template.content_tag('div', attrs) do
-      text_field(field, class: "half") +
+      text_field(field, class: "half", value: object.send(field).nil? ? nil : object.send(field).strftime(rails_date_format) ) +
       @template.content_tag(:span, class: "input-group-addon") do
         @template.content_tag :i, '', class: "icon-th glyphicon glyphicon-calendar"
       end
