@@ -198,7 +198,7 @@ NoCMS.Admin.UI = {
   },
 
   show_datetimepickers: function() {
-    $('.ui-datetimepicker').datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    $('.ui-datetimepicker').datetimepicker();
   }
 };
 
