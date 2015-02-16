@@ -48,7 +48,7 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
 
   def datetime_picker field, options = {}
 
-    options.merge! 'date-format' => "yyyy-mm-dd hh:ii",
+    options.reverse_merge! 'date-format' => "yyyy-mm-dd hh:ii",
       "date-autoclose" => true,
       "minute-step" => "15",
       "rails-date-format" => '%Y-%m-%d %H:%M'
