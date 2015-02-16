@@ -23,6 +23,9 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
       options = text
       text = nil
     end
+
+    options.reverse_merge! tooltip: I18n.t(".#{method}_tooltip")
+
     tooltip = options.delete :tooltip
     text = object.class.human_attribute_name(method) if text.nil?
     html = label method, text, options do
