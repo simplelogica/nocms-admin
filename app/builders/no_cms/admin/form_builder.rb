@@ -24,7 +24,7 @@ class NoCms::Admin::FormBuilder < ActionView::Helpers::FormBuilder
       text = nil
     end
 
-    options.reverse_merge! tooltip: I18n.t(".#{method}_tooltip")
+    options.reverse_merge! tooltip: @template.t(".#{method}_tooltip")
 
     tooltip = options.delete :tooltip
     text = object.class.human_attribute_name(method) if text.nil?
