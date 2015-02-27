@@ -3,6 +3,13 @@ nocms-admin
 
 Common functionality for NoCMS Admins
 
+Add to your Gemfile
+
+```ruby
+gem "nocms-admin", git: 'git@github.com:simplelogica/nocms-admin.git'
+```
+
+This gem is usually installed with *nocms-admin-pages*.
 
 ## Dependencies
 
