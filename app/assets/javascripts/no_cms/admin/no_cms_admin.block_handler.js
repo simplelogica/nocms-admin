@@ -218,7 +218,9 @@ NoCMS.Admin.BlockHandler = function(blocks_placeholder_selector) {
     var ckeditor_text_areas = block.find('.ckeditor');
     if (ckeditor_text_areas.length > 0) {
       ckeditor_text_areas.each(function() {
-        CKEDITOR.replace($(this).attr('name'));
+        if(CKEDITOR.instances[$(this).attr('id')] === undefined) {
+          CKEDITOR.replace($(this).attr('name'));
+        }
       });
     }
   }
